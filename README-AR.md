@@ -7,6 +7,7 @@
 - عناوين سورية
 - أرقام هواتف سورية (موبايل، أرضي، سيريتل، MTN)
 - نصوص باللهجة السورية
+- التاريخ الهجري والميلادي بالتنسيق السوري للتواريخ
 - واجهة مشابهة لحزمة PHPFaker
 
 ## التثبيت
@@ -37,6 +38,11 @@ $faker->syrianSyriatel(); // مثال: "+963 93 123 4567"
 $faker->syrianMTN(); // مثال: "+963 94 123 4567"
 $faker->syrianLandline(); // مثال: "+963 11 123 4567"
 $faker->syrianLandline(false); // مثال: "011 123 4567"
+
+// التواريخ
+$faker->syrianGregorianDate(); // مثال: , "22/07/2025"
+$faker->syrianHijriDate();     // مثال: , "16/01/1447"
+$faker->syrianRandomGregorianDate('-2 years', 'now'); // مثال:, "05/06/2023"
 ```
 
 ### دمج مع لارافيل
@@ -54,6 +60,9 @@ php artisan vendor:publish --tag=config
 - `$faker->syrianSyriatel($withCountryCode = true)`
 - `$faker->syrianMTN($withCountryCode = true)`
 - `$faker->syrianLandline($withCountryCode = true)`
+- `$faker->syrianGregorianDate($format = 'd/m/Y')`
+- `$faker->syrianHijriDate($format = 'd/m/Y')`
+- `$faker->syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
 
 ## الرخصة
 MIT 

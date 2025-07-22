@@ -2,6 +2,7 @@
 
 namespace Bit\ArabFaker;
 
+use Bit\ArabFaker\Providers\DateProvider;
 use Bit\ArabFaker\Providers\NameProvider;
 use Bit\ArabFaker\Providers\AddressProvider;
 use Bit\ArabFaker\Providers\PhoneProvider;
@@ -11,12 +12,14 @@ class ArabFaker
     protected $nameProvider;
     protected $addressProvider;
     protected $phoneProvider;
+    protected $dateProvider;
 
     public function __construct()
     {
         $this->nameProvider = new NameProvider();
         $this->addressProvider = new AddressProvider();
         $this->phoneProvider = new PhoneProvider();
+        $this->dateProvider = new DateProvider();
     }
 
     public function syrianName($gender = null)
@@ -57,5 +60,20 @@ class ArabFaker
     public function syrianMTN($withCountryCode = true)
     {
         return $this->phoneProvider->mtn($withCountryCode);
+    }
+
+    public function syrianGregorianDate($format = 'd/m/Y')
+    {
+        return $this->dateProvider->gregorianDate($format);
+    }
+
+    public function syrianHijriDate($format = 'd/m/Y')
+    {
+        return $this->dateProvider->hijriDate($format);
+    }
+
+    public function syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')
+    {
+        return $this->dateProvider->randomGregorianDate($start, $end, $format);
     }
 }

@@ -7,6 +7,7 @@ A PHP/Laravel package for generating culturally accurate fake data in Syrian Ara
 - Syrian addresses
 - Syrian phone numbers (mobile, landline, Syriatel, MTN)
 - Syrian dialect text
+- Gregorian and Hijri dates with Syrian format
 - Faker-like API
 
 ## Installation
@@ -37,6 +38,11 @@ $faker->syrianSyriatel(); // e.g., "+963 93 123 4567"
 $faker->syrianMTN(); // e.g., "+963 94 123 4567"
 $faker->syrianLandline(); // e.g., "+963 11 123 4567"
 $faker->syrianLandline(false); // e.g., "011 123 4567"
+
+// Dates
+$faker->syrianGregorianDate(); // e.g., "22/07/2025"
+$faker->syrianHijriDate();     // e.g., "16/01/1447"
+$faker->syrianRandomGregorianDate('-2 years', 'now'); // e.g., "05/06/2023"
 ```
 
 ### Laravel Integration
@@ -54,6 +60,8 @@ php artisan vendor:publish --tag=config
 - `$faker->syrianSyriatel($withCountryCode = true)`
 - `$faker->syrianMTN($withCountryCode = true)`
 - `$faker->syrianLandline($withCountryCode = true)`
-
+- `$faker->syrianGregorianDate($format = 'd/m/Y')`
+- `$faker->syrianHijriDate($format = 'd/m/Y')`
+- `$faker->syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
 ## License
 MIT 

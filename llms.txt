@@ -1,0 +1,522 @@
+The following is a digest of the repository "arabFaker".
+This digest is designed to be easily parsed by Large Language Models.
+
+--- SUMMARY ---
+Repository: arabFaker
+Files Analyzed: 10
+Total Text Size: 14.42 KB
+Estimated Tokens (text only): ~4,933
+
+--- DIRECTORY STRUCTURE ---
+arabFaker/
+├── config/
+│   └── syrian-faker.php
+├── src/
+│   ├── Providers/
+│   │   ├── AddressProvider.php
+│   │   ├── NameProvider.php
+│   │   ├── PhoneProvider.php
+│   │   └── TextProvider.php
+│   ├── ArabFaker.php
+│   └── ArabFakerServiceProvider.php
+├── composer.json
+├── README-AR.md
+└── README.md
+
+
+--- FILE CONTENTS ---
+============================================================
+FILE: config/syrian-faker.php
+============================================================
+<?php
+
+return [
+    // Future configuration options for Syrian Faker can be added here.
+];
+
+
+============================================================
+FILE: src/Providers/AddressProvider.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker\Providers;
+
+class AddressProvider
+{
+    protected $cities = [
+        'دمشق', 'حلب', 'حمص', 'حماة', 'اللاذقية', 'طرطوس', 'دير الزور', 'الرقة', 'إدلب', 'درعا',
+        'السويداء', 'الحسكة', 'القنيطرة'
+    ];
+
+    protected $neighborhoods = [
+        'المزة', 'المالكي', 'باب توما', 'الحميدية', 'الصالحية', 'القصاع', 'ركن الدين', 'الشعلان', 'البرامكة', 'جرمانا',
+        'السبع بحرات', 'ساروجة', 'مشروع دمر', 'باب سريجة', 'الميدان', 'الزاهرة', 'القدم', 'كفرسوسة', 'المهاجرين', 'العدوي'
+    ];
+
+    protected $streetNames = [
+        'شارع الحمرا', 'شارع بغداد', 'شارع الثورة', 'شارع العابد', 'شارع النصر', 'شارع 29 أيار', 'شارع مرشد خاطر', 'شارع فارس الخوري', 'شارع الجلاء', 'شارع فلسطين'
+    ];
+
+    public function address()
+    {
+        $city = $this->cities[array_rand($this->cities)];
+        $neighborhood = $this->neighborhoods[array_rand($this->neighborhoods)];
+        $street = $this->streetNames[array_rand($this->streetNames)];
+        $building = rand(1, 200);
+        return "$city، $neighborhood، $street، بناء رقم $building";
+    }
+}
+?>
+
+
+============================================================
+FILE: src/Providers/NameProvider.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker\Providers;
+
+class NameProvider
+{
+    protected $maleFirstNames = [
+        'علي', 'محمد', 'أحمد', 'محمود', 'حسن', 'حسين', 'يوسف', 'عمر', 'رامي', 'سامر',
+        'فادي', 'فراس', 'وائل', 'باسل', 'شادي', 'طارق', 'نزار', 'جود', 'كرم', 'أنس',
+        'يزن', 'لؤي', 'معاذ', 'عمار', 'عاصم', 'غسان', 'حازم', 'سيف', 'براء', 'عدنان',
+        'مروان', 'شريف', 'حيدر', 'سليمان', 'سومر', 'أوس', 'إياد', 'تيم', 'جهاد', 'رائد',
+        'ربيع', 'ركان', 'عابدين', 'عبدو', 'عبد الكريم', 'عبد الرحمن', 'عبد الله', 'عبد الغني', 'عبد المجيد', 'عبد القادر',
+        'عبد الباسط', 'عبد الرزاق', 'عبد الحليم', 'عبد العزيز', 'عبد الفتاح', 'عبد المنعم', 'عبد الهادي', 'عبد الوهاب', 'عبد السلام', 'عبد الستار',
+        'عبد الجليل', 'عبد الحفيظ', 'عبد الحكيم', 'عبد الدايم', 'عبد الدائم', 'عبد الرؤوف'
+    ];
+
+    protected $femaleFirstNames = [
+        'مريم', 'سارة', 'هبة', 'دينا', 'رنا', 'نور', 'لينا', 'سلمى', 'ريم', 'فرح',
+        'جمانة', 'سوسن', 'هدى', 'منى', 'ياسمين', 'رغد', 'سيرين', 'شذى', 'غادة', 'عبير'
+    ];
+
+    protected $lastNames = [
+        'الحلبي', 'الدمشقي', 'العلي', 'الخطيب', 'الأسعد', 'الحموي', 'اليوسف', 'الشيخ', 'الزهر', 'الرفاعي',
+        'الطويل', 'السباعي', 'الملقي', 'الزعبي', 'الديب', 'البرهو', 'الطاهر', 'النجار', 'العباس', 'القدسي'
+    ];
+
+    public function name($gender = null)
+    {
+        if ($gender === 'male') {
+            $first = $this->firstName('male');
+        } elseif ($gender === 'female') {
+            $first = $this->firstName('female');
+        } else {
+            $first = rand(0, 1) ? $this->firstName('male') : $this->firstName('female');
+        }
+        $last = $this->lastName();
+        return "$first $last";
+    }
+
+    public function firstName($gender = null)
+    {
+        if ($gender === 'male') {
+            return $this->maleFirstNames[array_rand($this->maleFirstNames)];
+        } elseif ($gender === 'female') {
+            return $this->femaleFirstNames[array_rand($this->femaleFirstNames)];
+        } else {
+            $all = array_merge($this->maleFirstNames, $this->femaleFirstNames);
+            return $all[array_rand($all)];
+        }
+    }
+
+    public function lastName()
+    {
+        return $this->lastNames[array_rand($this->lastNames)];
+    }
+}
+
+
+============================================================
+FILE: src/Providers/PhoneProvider.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker\Providers;
+
+class PhoneProvider
+{
+    protected $syriatelPrefixes = [
+        '093', '098', '099'
+    ];
+    protected $mtnPrefixes = [
+        '094', '095', '096'
+    ];
+    protected $landlineAreaCodes = [
+        '11', // Damascus
+        '21', // Aleppo
+        '31', // Daraa
+        '41', // Hama
+        '33', // Homs
+        '43', // Latakia
+        '53', // Tartous
+        '22', // Idlib
+        '23', // Deir ez-Zor
+        '45', // Al-Hasakah
+        '54', // As-Suwayda
+        '46', // Raqqa
+        '44', // Quneitra
+    ];
+    protected $countryCode = '+963';
+
+    public function mobile($withCountryCode = true, $company = null)
+    {
+        $prefix = $this->getMobilePrefix($company);
+        $number = sprintf('%03d %04d', rand(100, 999), rand(1000, 9999));
+        if ($withCountryCode) {
+            return $this->countryCode . ' ' . substr($prefix, 1) . ' ' . $number;
+        }
+        return $prefix . ' ' . $number;
+    }
+
+    public function syriatel($withCountryCode = true)
+    {
+        return $this->mobile($withCountryCode, 'syriatel');
+    }
+
+    public function mtn($withCountryCode = true)
+    {
+        return $this->mobile($withCountryCode, 'mtn');
+    }
+
+    public function landline($withCountryCode = true)
+    {
+        $area = $this->landlineAreaCodes[array_rand($this->landlineAreaCodes)];
+        $number = sprintf('%03d %04d', rand(100, 999), rand(1000, 9999));
+        if ($withCountryCode) {
+            return $this->countryCode . ' ' . $area . ' ' . $number;
+        }
+        return '0' . $area . ' ' . $number;
+    }
+
+    protected function getMobilePrefix($company = null)
+    {
+        if ($company === 'syriatel') {
+            return $this->syriatelPrefixes[array_rand($this->syriatelPrefixes)];
+        } elseif ($company === 'mtn') {
+            return $this->mtnPrefixes[array_rand($this->mtnPrefixes)];
+        } else {
+            $all = array_merge($this->syriatelPrefixes, $this->mtnPrefixes);
+            return $all[array_rand($all)];
+        }
+    }
+}
+
+
+============================================================
+FILE: src/Providers/TextProvider.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker\Providers;
+
+class TextProvider
+{
+    protected $letters = [
+        'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'
+    ];
+
+    protected $words = [
+        'مرحبا', 'أهلين', 'كيفك', 'شو', 'تمام', 'منيح', 'كتير', 'شغلة', 'حلو', 'بسرعة',
+        'يلا', 'لسا', 'عنجد', 'هيك', 'ليش', 'معقول', 'خلص', 'طيب', 'بعدين', 'مشان', 'إيمتى',
+        'وين', 'هون', 'هناك', 'شوي', 'كتير', 'كتابة', 'سوريا', 'دمشق', 'حبيبي', 'حبيبتي'
+    ];
+
+    protected $sentenceTemplates = [
+        'شو أخبارك اليوم؟',
+        'كيف الجو عندكم؟',
+        'إيمتى رح نلتقي؟',
+        'لسا ما خلصت شغلي.',
+        'عنجد الموضوع مهم كتير.',
+        'ليش ما إجيت مبارح؟',
+        'خلص بكفي لهون.',
+        'معقول هيك صار؟',
+        'طيب، شو رأيك؟',
+        'يلا نروح نشرب قهوة.'
+    ];
+
+    public function letter()
+    {
+        return $this->letters[array_rand($this->letters)];
+    }
+
+    public function word()
+    {
+        return $this->words[array_rand($this->words)];
+    }
+
+    public function sentence()
+    {
+        return $this->sentenceTemplates[array_rand($this->sentenceTemplates)];
+    }
+
+    public function paragraph($sentences = 3)
+    {
+        $result = [];
+        for ($i = 0; $i < $sentences; $i++) {
+            $result[] = $this->sentence();
+        }
+        return implode(' ', $result);
+    }
+}
+
+
+============================================================
+FILE: src/ArabFaker.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker;
+
+use Bit\ArabFaker\Providers\NameProvider;
+use Bit\ArabFaker\Providers\AddressProvider;
+use Bit\ArabFaker\Providers\PhoneProvider;
+
+class ArabFaker
+{
+    protected $nameProvider;
+    protected $addressProvider;
+    protected $phoneProvider;
+
+    public function __construct()
+    {
+        $this->nameProvider = new NameProvider();
+        $this->addressProvider = new AddressProvider();
+        $this->phoneProvider = new PhoneProvider();
+    }
+
+    public function syrianName($gender = null)
+    {
+        return $this->nameProvider->name($gender);
+    }
+
+    public function syrianFirstName($gender = null)
+    {
+        return $this->nameProvider->firstName($gender);
+    }
+
+    public function syrianLastName()
+    {
+        return $this->nameProvider->lastName();
+    }
+
+    public function syrianAddress()
+    {
+        return $this->addressProvider->address();
+    }
+
+    public function syrianMobile($withCountryCode = true, $company = null)
+    {
+        return $this->phoneProvider->mobile($withCountryCode, $company);
+    }
+
+    public function syrianLandline($withCountryCode = true)
+    {
+        return $this->phoneProvider->landline($withCountryCode);
+    }
+
+    public function syrianSyriatel($withCountryCode = true)
+    {
+        return $this->phoneProvider->syriatel($withCountryCode);
+    }
+
+    public function syrianMTN($withCountryCode = true)
+    {
+        return $this->phoneProvider->mtn($withCountryCode);
+    }
+}
+
+
+============================================================
+FILE: src/ArabFakerServiceProvider.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker;
+
+use Illuminate\Support\ServiceProvider;
+
+class ArabFakerServiceProvider extends ServiceProvider
+{
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/syrian-faker.php', 'syrian-faker');
+        $this->app->singleton('syrian-faker', function () {
+            return new SyrianFaker();
+        });
+    }
+
+    public function boot()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/syrian-faker.php' => config_path('syrian-faker.php'),
+            ], 'config');
+        }
+    }
+}
+
+
+============================================================
+FILE: composer.json
+============================================================
+{
+    "name": "bit/arab-faker",
+    "description": "A PHP package for generating realistic Syrian Arabic fake data—names, addresses, text, and more. Designed for Laravel 8–12 with a Faker-like API, it delivers authentic Syrian dialect content, from Damascene streets to Aleppine names. Perfect for testing, seeding databases, or placeholder content with local flavor.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bassel Aflak",
+            "email": "bassel.af@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "illuminate/support": ">=8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bit\\ArabFaker\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bit\\ArabFaker\\SyrianFakerServiceProvider"
+            ]
+        }
+    }
+}
+
+
+============================================================
+FILE: README-AR.md
+============================================================
+# ArabFaker
+
+حزمة PHP/Laravel لتوليد بيانات وهمية دقيقة ثقافيًا باللهجة السورية.
+
+## الميزات
+- أسماء سورية
+- عناوين سورية
+- أرقام هواتف سورية (موبايل، أرضي، سيريتل، MTN)
+- نصوص باللهجة السورية
+- واجهة مشابهة لحزمة PHPFaker
+
+## التثبيت
+```bash
+composer require bit/arab-faker
+```
+
+## الاستخدام
+```php
+use Bit\ArabFaker\ArabFaker;
+
+$faker = new ArabFaker();
+
+// الأسماء
+$faker->syrianName(); // مثال: "علي الحلبي"
+$faker->syrianFirstName(); // مثال: "مريم"
+$faker->syrianLastName(); // مثال: "الدمشقي"
+
+// العناوين
+$faker->syrianAddress(); // مثال: "دمشق، المزة، شارع الحمرا، بناء رقم 12"
+
+// أرقام الهواتف
+$faker->syrianMobile(); // مثال: "+963 93 123 4567" (شركة عشوائية)
+$faker->syrianMobile(false); // مثال: "093 123 4567" (بدون رمز دولي)
+$faker->syrianMobile(true, 'syriatel'); // مثال: "+963 93 123 4567" (سيريتل)
+$faker->syrianMobile(true, 'mtn'); // مثال: "+963 94 123 4567" (MTN)
+$faker->syrianSyriatel(); // مثال: "+963 93 123 4567"
+$faker->syrianMTN(); // مثال: "+963 94 123 4567"
+$faker->syrianLandline(); // مثال: "+963 11 123 4567"
+$faker->syrianLandline(false); // مثال: "011 123 4567"
+```
+
+### دمج مع لارافيل
+الحزمة تُسجل تلقائيًا عبر Service Provider. يمكنك نشر ملف الإعدادات:
+```bash
+php artisan vendor:publish --tag=config
+```
+
+## الواجهة البرمجية
+- `$faker->syrianName($gender = null)`
+- `$faker->syrianFirstName($gender = null)`
+- `$faker->syrianLastName()`
+- `$faker->syrianAddress()`
+- `$faker->syrianMobile($withCountryCode = true, $company = null)`
+- `$faker->syrianSyriatel($withCountryCode = true)`
+- `$faker->syrianMTN($withCountryCode = true)`
+- `$faker->syrianLandline($withCountryCode = true)`
+
+## الرخصة
+MIT 
+
+
+============================================================
+FILE: README.md
+============================================================
+# ArabFaker
+
+A PHP/Laravel package for generating culturally accurate fake data in Syrian Arabic.
+
+## Features
+- Syrian names
+- Syrian addresses
+- Syrian phone numbers (mobile, landline, Syriatel, MTN)
+- Syrian dialect text
+- Faker-like API
+
+## Installation
+```bash
+composer require bit/arab-faker
+```
+
+## Usage
+```php
+use Bit\ArabFaker\ArabFaker;
+
+$faker = new ArabFaker();
+
+// Names
+$faker->syrianName(); // e.g., "علي الحلبي"
+$faker->syrianFirstName(); // e.g., "مريم"
+$faker->syrianLastName(); // e.g., "الدمشقي"
+
+// Addresses
+$faker->syrianAddress(); // e.g., "دمشق، المزة، شارع الحمرا، بناء رقم 12"
+
+// Phone Numbers
+$faker->syrianMobile(); // e.g., "+963 93 123 4567" (random company)
+$faker->syrianMobile(false); // e.g., "093 123 4567" (without country code)
+$faker->syrianMobile(true, 'syriatel'); // e.g., "+963 93 123 4567" (Syriatel)
+$faker->syrianMobile(true, 'mtn'); // e.g., "+963 94 123 4567" (MTN Syria)
+$faker->syrianSyriatel(); // e.g., "+963 93 123 4567"
+$faker->syrianMTN(); // e.g., "+963 94 123 4567"
+$faker->syrianLandline(); // e.g., "+963 11 123 4567"
+$faker->syrianLandline(false); // e.g., "011 123 4567"
+```
+
+### Laravel Integration
+The package auto-registers via Service Provider. You can publish the config:
+```bash
+php artisan vendor:publish --tag=config
+```
+
+## API
+- `$faker->syrianName($gender = null)`
+- `$faker->syrianFirstName($gender = null)`
+- `$faker->syrianLastName()`
+- `$faker->syrianAddress()`
+- `$faker->syrianMobile($withCountryCode = true, $company = null)`
+- `$faker->syrianSyriatel($withCountryCode = true)`
+- `$faker->syrianMTN($withCountryCode = true)`
+- `$faker->syrianLandline($withCountryCode = true)`
+
+## License
+MIT
