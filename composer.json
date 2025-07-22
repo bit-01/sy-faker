@@ -1,0 +1,28 @@
+{
+    "name": "bit/arab-faker",
+    "description": "A PHP package for generating realistic Syrian Arabic fake data—names, addresses, text, and more. Designed for Laravel 8–12 with a Faker-like API, it delivers authentic Syrian dialect content, from Damascene streets to Aleppine names. Perfect for testing, seeding databases, or placeholder content with local flavor.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bassel Aflak",
+            "email": "bassel.af@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "illuminate/support": ">=8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bit\\ArabFaker\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bit\\ArabFaker\\SyrianFakerServiceProvider"
+            ]
+        }
+    }
+}
