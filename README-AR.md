@@ -5,6 +5,7 @@
 ## الميزات
 - أسماء سورية
 - عناوين سورية
+- أرقام هواتف سورية (موبايل، أرضي، سيريتل، MTN)
 - نصوص باللهجة السورية
 - واجهة مشابهة لحزمة PHPFaker
 
@@ -15,11 +16,27 @@ composer require bit/arab-faker
 
 ## الاستخدام
 ```php
-use Bit\ArabFaker\SyrianFaker;
+use Bit\ArabFaker\ArabFaker;
 
-$faker = new SyrianFaker();
-echo $faker->syrianName(); // مثال: "علي الحلبي"
-echo $faker->syrianAddress(); // مثال: "دمشق، المزة، شارع الحمرا، بناء رقم 12"
+$faker = new ArabFaker();
+
+// الأسماء
+$faker->syrianName(); // مثال: "علي الحلبي"
+$faker->syrianFirstName(); // مثال: "مريم"
+$faker->syrianLastName(); // مثال: "الدمشقي"
+
+// العناوين
+$faker->syrianAddress(); // مثال: "دمشق، المزة، شارع الحمرا، بناء رقم 12"
+
+// أرقام الهواتف
+$faker->syrianMobile(); // مثال: "+963 93 123 4567" (شركة عشوائية)
+$faker->syrianMobile(false); // مثال: "093 123 4567" (بدون رمز دولي)
+$faker->syrianMobile(true, 'syriatel'); // مثال: "+963 93 123 4567" (سيريتل)
+$faker->syrianMobile(true, 'mtn'); // مثال: "+963 94 123 4567" (MTN)
+$faker->syrianSyriatel(); // مثال: "+963 93 123 4567"
+$faker->syrianMTN(); // مثال: "+963 94 123 4567"
+$faker->syrianLandline(); // مثال: "+963 11 123 4567"
+$faker->syrianLandline(false); // مثال: "011 123 4567"
 ```
 
 ### دمج مع لارافيل
@@ -33,6 +50,10 @@ php artisan vendor:publish --tag=config
 - `$faker->syrianFirstName($gender = null)`
 - `$faker->syrianLastName()`
 - `$faker->syrianAddress()`
+- `$faker->syrianMobile($withCountryCode = true, $company = null)`
+- `$faker->syrianSyriatel($withCountryCode = true)`
+- `$faker->syrianMTN($withCountryCode = true)`
+- `$faker->syrianLandline($withCountryCode = true)`
 
 ## الرخصة
 MIT 
