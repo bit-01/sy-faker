@@ -43,6 +43,11 @@ $faker->syrianLandline(false); // مثال: "011 123 4567"
 $faker->syrianGregorianDate(); // مثال: , "22/07/2025"
 $faker->syrianHijriDate();     // مثال: , "16/01/1447"
 $faker->syrianRandomGregorianDate('-2 years', 'now'); // مثال:, "05/06/2023"
+
+// الشركات
+$faker->syrianCompanyName();  // مثال: "شركة النور محدودة المسؤولية"
+$faker->syrianJobTitle();     // مثال: "مهندس برمجيات"
+$faker->syrianBusinessType(); // مثال: "تكنولوجيا المعلومات"
 ```
 
 ### دمج مع لارافيل
@@ -63,6 +68,9 @@ php artisan vendor:publish --tag=config
 - `$faker->syrianGregorianDate($format = 'd/m/Y')`
 - `$faker->syrianHijriDate($format = 'd/m/Y')`
 - `$faker->syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
+- `$faker->syrianCompanyName()`
+- `$faker->syrianJobTitle()`
+- `$faker->syrianBusinessType()`
 
 ## الرخصة
 MIT 

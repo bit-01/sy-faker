@@ -2,6 +2,7 @@
 
 namespace Bit\ArabFaker;
 
+use Bit\ArabFaker\Providers\CompanyProvider;
 use Bit\ArabFaker\Providers\DateProvider;
 use Bit\ArabFaker\Providers\NameProvider;
 use Bit\ArabFaker\Providers\AddressProvider;
@@ -13,6 +14,7 @@ class ArabFaker
     protected $addressProvider;
     protected $phoneProvider;
     protected $dateProvider;
+    protected $companyProvider;
 
     public function __construct()
     {
@@ -20,6 +22,7 @@ class ArabFaker
         $this->addressProvider = new AddressProvider();
         $this->phoneProvider = new PhoneProvider();
         $this->dateProvider = new DateProvider();
+        $this->companyProvider = new CompanyProvider();
     }
 
     public function syrianName($gender = null)
@@ -75,5 +78,20 @@ class ArabFaker
     public function syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')
     {
         return $this->dateProvider->randomGregorianDate($start, $end, $format);
+    }
+
+    public function syrianCompanyName()
+    {
+        return $this->companyProvider->companyName();
+    }
+
+    public function syrianJobTitle()
+    {
+        return $this->companyProvider->jobTitle();
+    }
+
+    public function syrianBusinessType()
+    {
+        return $this->companyProvider->businessType();
     }
 }
