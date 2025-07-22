@@ -23,6 +23,19 @@ use Bit\ArabFaker\ArabFaker;
 
 $faker = new ArabFaker();
 
+// Text and Paragraphs
+$faker->word(); // e.g., "مبسوط", "إيمتى", "سوريا", "رفيق", "عنجد"
+$faker->syrianWords(5); // e.g., "مرحبا كيفك عنجد شوي منيح"
+$faker->syrianWords(5, true); //e.g., ['مرحبا', 'كيفك', 'عنجد', 'شوي', 'منيح']
+$faker->syrianSentences(2); // e.g., "شو صاير معك؟ العمل الجاد يؤدي إلى النجاح."
+$faker->syrianSentences(2, 'msa', false, ' | '); // e.g., "ذهبت إلى السوق | إن التعليم هو أساس تقدم الأمم."
+$faker->syrianSentence(); // e.g., "شو صاير معك؟"
+$faker->syrianSentence('msa'); // e.g., "ذهبت إلى السوق لشراء بعض الحاجيات."
+$faker->syrianSentence('dialect'); // e.g., "خلص بكفي لهون."
+$faker->syrianParagraph(); // default mixed
+$faker->syrianParagraph(4, 6, 'msa'); // only Modern Standard Arabic
+$faker->syrianParagraph(5, 8, 'dialect'); // only Syrian dialect
+
 // Names
 $faker->syrianName(); // e.g., "علي الحلبي"
 $faker->syrianFirstName(); // e.g., "مريم"
@@ -74,6 +87,12 @@ php artisan vendor:publish --tag=config
 ```
 
 ## API
+- `$faker->syrianLetter()`
+- `$faker->syrianWord()`
+- `$faker->syrianWords($count = 5, $asArray = false, $separator = ' ')`
+- `$faker->syrianSentence($mode = 'mixed')`
+- `$faker->syrianSentences($count = 3, $mode = 'mixed', $asArray = false, $separator = ' ')`
+- `$faker->syrianParagraph($min = 3, $max = 7, $mode = 'mixed')`
 - `$faker->syrianName($gender = null)`
 - `$faker->syrianFirstName($gender = null)`
 - `$faker->syrianLastName()`

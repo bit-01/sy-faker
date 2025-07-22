@@ -24,7 +24,7 @@ class AddressProvider
         $neighborhood = $this->neighborhoods[array_rand($this->neighborhoods)];
         $street = $this->streetNames[array_rand($this->streetNames)];
         $building = rand(1, 200);
-        return "$city، $neighborhood، $street، بناء رقم $building";
+        return "{$city}، {$neighborhood}، {$street}، بناء رقم {$building}";
     }
 }
 ?>

@@ -3,9 +3,9 @@ This digest is designed to be easily parsed by Large Language Models.
 
 --- SUMMARY ---
 Repository: arabFaker
-Files Analyzed: 10
-Total Text Size: 14.42 KB
-Estimated Tokens (text only): ~4,933
+Files Analyzed: 13
+Total Text Size: 35.45 KB
+Estimated Tokens (text only): ~12,352
 
 --- DIRECTORY STRUCTURE ---
 arabFaker/
@@ -14,6 +14,9 @@ arabFaker/
 ├── src/
 │   ├── Providers/
 │   │   ├── AddressProvider.php
+│   │   ├── CompanyProvider.php
+│   │   ├── CultureProvider.php
+│   │   ├── DateProvider.php
 │   │   ├── NameProvider.php
 │   │   ├── PhoneProvider.php
 │   │   └── TextProvider.php
@@ -68,6 +71,162 @@ class AddressProvider
     }
 }
 ?>
+
+
+============================================================
+FILE: src/Providers/CompanyProvider.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker\Providers;
+
+class CompanyProvider
+{
+    protected $companyPrefixes = [
+        'شركة', 'مؤسسة', 'مجموعة', 'معمل', 'مصنع', 'ورشة'
+    ];
+
+    protected $companySuffixes = [
+        'ذ.م.م', 'مساهمة مغفلة', 'محدودة المسؤولية', 'قابضة', 'تضامنية'
+    ];
+
+    protected $baseCompanyNames = [
+        'النور', 'الشام', 'الشرق', 'السورية', 'البركة', 'التوفيق', 'المدينة', 'الاتحاد', 'الصفا', 'الأمانة',
+        'المستقبل', 'المهندسين', 'الخدمات', 'الأعمال', 'المتحدة', 'الرؤية', 'المجتهد', 'الأمل', 'النهضة', 'البرمجيات'
+    ];
+
+    protected $jobTitles = [
+        'مهندس برمجيات', 'محاسب', 'مدير مبيعات', 'مندوب مبيعات', 'مطور ويب', 'أخصائي تسويق', 'مصمم جرافيك',
+        'مدير مشاريع', 'سكرتير تنفيذي', 'عامل مستودع', 'مهندس مدني', 'طبيب', 'صيدلي', 'ممرض', 'معلم', 'مدرس خصوصي',
+        'سائق', 'عامل نظافة', 'نجار', 'حداد', 'كهربائي', 'فني صيانة', 'محامي', 'إداري'
+    ];
+
+    protected $businessTypes = [
+        'تجارة عامة', 'تكنولوجيا المعلومات', 'الصناعات الغذائية', 'الخدمات اللوجستية', 'البناء والتشييد', 'الخدمات الصحية',
+        'المحاسبة', 'القانون', 'التعليم', 'البيع بالتجزئة', 'الاستيراد والتصدير', 'البرمجيات', 'الصناعات التحويلية',
+        'المقاولات', 'الزراعة', 'الخدمات المالية'
+    ];
+
+    public function companyName()
+    {
+        $prefix = $this->companyPrefixes[array_rand($this->companyPrefixes)];
+        $name = $this->baseCompanyNames[array_rand($this->baseCompanyNames)];
+        $suffix = $this->companySuffixes[array_rand($this->companySuffixes)];
+        return "$prefix $name $suffix";
+    }
+
+    public function jobTitle()
+    {
+        return $this->jobTitles[array_rand($this->jobTitles)];
+    }
+
+    public function businessType()
+    {
+        return $this->businessTypes[array_rand($this->businessTypes)];
+    }
+}
+
+
+============================================================
+FILE: src/Providers/CultureProvider.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker\Providers;
+
+class CultureProvider
+{
+    protected $foods = [
+        'فتوش', 'تبولة', 'كبة مقلية', 'كبة نيئة', 'محشي كوسا', 'محشي باذنجان', 'يبرق', 'كباب حلبي', 'مجدرة', 'شاكرية',
+        'منسف', 'شاورما دجاج', 'شاورما لحم', 'حمص', 'متبل', 'لبنة بالنعنع', 'فول مدمس', 'شوربة عدس', 'صفيحة شامية',
+        'شيش برك', 'مقلوبة', 'رز بحليب', 'معمول', 'غريبة', 'مهلبية', 'زنود الست', 'كنافة نابلسية', 'عوامة', 'نابلسية',
+        'برازق', 'كعك شامية', 'معكرونة بالبشاميل', 'سلق باللبن', 'بامية', 'باذنجان مخلل', 'مكدوس', 'كوارع', 'سجق بالبيض',
+        'بيض عيون مع سماق', 'فريكة', 'فلافل', 'سفيحة حلبية', 'كعك بالسمسم', 'لحمة بالصينية'
+    ];
+
+
+    protected $idioms = [
+        'الحيطان إلها آذان', 'رجع بخفي حنين', 'اللي اختشوا ماتوا', 'حط إيده بمي باردة', 'لا بيعرف راسه من رجليه',
+        'جاب العيد', 'يا جبل ما يهزك ريح', 'مثل الأطرش بالزفة', 'فاتك القطار', 'على قد بساطك مد رجليك',
+        'ما بيفرق عن الطاسة غير بالعطسة', 'ينفخ على اللبن من كتر ما انحرق بالمي', 'مش كل اصابعك متل بعض', 'بيسأل عن الجمل وهو عم ياكل كبده',
+        'بيضحك عالمشنقة', 'بيصطاد بالمية العكرة', 'متل العصفور بإيدك ولا عشرة عالشجرة', 'صار الحكي ببلاش', 'بيدق المي بالهاون'
+    ];
+
+
+    protected $proverbs = [
+        'امشي عدل يحتار عدوك فيك', 'كل تأخيرة فيها خيرة', 'جود من الموجود', 'إذا كان الكلام من فضة فالسكوت من ذهب',
+        'القرد بعين أمه غزال', 'العين بصيرة والإيد قصيرة', 'اللي ما يعرفك ما يثمنك', 'يا مأمنة للرجال يا مأمنة للمية بالغربال',
+        'حبل الكذب قصير', 'اللي بياكل لوحده بيختنق', 'رب ضارة نافعة', 'الغايب عذره معه', 'اللي بيته من زجاج ما يحدف الناس بحجارة',
+        'باب النجار مخلع', 'كثرة الطباخين تحرق الطبخة', 'طاح الفاس بالراس', 'اللي ما يطول العنب يقول عنه حامض',
+        'ما كل ما يتمنى المرء يدركه', 'من حفر حفرة لأخيه وقع فيها', 'لو كان فيه خير ما رماه الطير'
+    ];
+
+
+    protected $traditionalItems = [
+        'طربوش', 'عباية', 'شماغ', 'صاج', 'دلة قهوة', 'نرجيلة', 'أركيلة', 'مسبحة', 'صابون الغار', 'خزانة شامية',
+        'بقجة', 'طاسة نحاس', 'منقل فحم', 'قنديل كاز', 'كيس خيش', 'بوق صاج', 'جرن ومدقة', 'مسكة عنبر',
+        'بسطار شامية', 'سبحة حجر كريم', 'مرآة يدوية محفورة', 'طقم شاي دمشقي', 'سكبة خزف', 'مروحة يدوية',
+        'بُرْديّة', 'سجادة شرقية', 'حُقّة تبغ', 'صندوق عربي منقوش', 'ختم شمع', 'طاقية صوف شامية'
+    ];
+
+
+    public function food()
+    {
+        return $this->foods[array_rand($this->foods)];
+    }
+
+    public function idiom()
+    {
+        return $this->idioms[array_rand($this->idioms)];
+    }
+
+    public function proverb()
+    {
+        return $this->proverbs[array_rand($this->proverbs)];
+    }
+
+    public function traditionalItem()
+    {
+        return $this->traditionalItems[array_rand($this->traditionalItems)];
+    }
+}
+
+
+============================================================
+FILE: src/Providers/DateProvider.php
+============================================================
+<?php
+
+namespace Bit\ArabFaker\Providers;
+
+use IntlDateFormatter;
+use DateTime;
+use Alkoumi\LaravelHijriDate\Hijri;
+
+class DateProvider
+{
+    public function gregorianDate($format = 'd/m/Y', $locale = 'ar_SY')
+    {
+        $date = new DateTime();
+        $formatter = new IntlDateFormatter($locale, IntlDateFormatter::FULL, IntlDateFormatter::NONE);
+        $formatter->setPattern($format);
+        return $formatter->format($date);
+    }
+
+    public function hijriDate($format = 'd/m/Y', $locale = 'ar_SY')
+    {
+        return Hijri::Date($format);
+    }
+
+    public function randomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y', $locale = 'ar_SY')
+    {
+        $timestamp = mt_rand(strtotime($start), strtotime($end));
+        $date = (new DateTime())->setTimestamp($timestamp);
+        $formatter = new IntlDateFormatter($locale, IntlDateFormatter::FULL, IntlDateFormatter::NONE);
+        $formatter->setPattern($format);
+        return $formatter->format($date);
+    }
+}
 
 
 ============================================================
@@ -221,47 +380,134 @@ class TextProvider
     ];
 
     protected $words = [
-        'مرحبا', 'أهلين', 'كيفك', 'شو', 'تمام', 'منيح', 'كتير', 'شغلة', 'حلو', 'بسرعة',
-        'يلا', 'لسا', 'عنجد', 'هيك', 'ليش', 'معقول', 'خلص', 'طيب', 'بعدين', 'مشان', 'إيمتى',
-        'وين', 'هون', 'هناك', 'شوي', 'كتير', 'كتابة', 'سوريا', 'دمشق', 'حبيبي', 'حبيبتي'
+        'مرحبا', 'أهلين', 'السلام', 'أهلا', 'هلا', 'صباحو', 'مسّا', 'يسعدلي صباحك',
+        'كيفك', 'شو', 'ليش', 'هيك', 'يعني', 'عنجد', 'طيب', 'خلص', 'بعدين', 'إيمتى', 'قديش',
+        'هون', 'هناك', 'تحت', 'فوق', 'جنب', 'ورا', 'قدّام',
+        'زعلان', 'مبسوط', 'تعبان', 'مروق', 'مزعوج', 'خايف', 'مرتاح',
+        'يلا', 'استنى', 'راح', 'إجى', 'بلش', 'خلص', 'دوام', 'سهرة', 'طالع', 'راجع',
+        'منيح', 'كتير', 'شوي', 'فاضي', 'مليان', 'تقيل', 'خفيف', 'حلو', 'بشع',
+        'شغلة', 'قصة', 'كلام', 'غدا', 'فطور', 'قهوة', 'بيت', 'شغل', 'مدرسة', 'سيارة',
+        'معقول', 'مستحيل', 'عن إذنك', 'يا لطيف', 'الله يعين', 'الله يسامحك', 'إن شاء الله', 'الحمد لله',
+        'حبيبي', 'حبيبتي', 'بابا', 'ماما', 'رفيق', 'صاحب', 'خطيب', 'جيران',
+        'سوريا', 'دمشق', 'حلب', 'حمص', 'طرطوس', 'اللاذقية', 'درعا', 'السويداء',
+        'كتابة', 'كلمة', 'ضحك', 'بكاء', 'تليفون', 'واتساب', 'دقيقة', 'ساعة', 'بكرة', 'هلأ'
     ];
 
-    protected $sentenceTemplates = [
-        'شو أخبارك اليوم؟',
-        'كيف الجو عندكم؟',
-        'إيمتى رح نلتقي؟',
-        'لسا ما خلصت شغلي.',
-        'عنجد الموضوع مهم كتير.',
-        'ليش ما إجيت مبارح؟',
-        'خلص بكفي لهون.',
-        'معقول هيك صار؟',
-        'طيب، شو رأيك؟',
-        'يلا نروح نشرب قهوة.'
+
+    protected $dialectSentences = [
+        'شو أخبارك اليوم؟', 'كيف الجو عندكم؟', 'إيمتى رح نلتقي؟', 'لسا ما خلصت شغلي.',
+        'عنجد الموضوع مهم كتير.', 'ليش ما إجيت مبارح؟', 'خلص بكفي لهون.', 'معقول هيك صار؟',
+        'طيب، شو رأيك؟', 'يلا نروح نشرب قهوة.', 'شو بدك مني؟', 'خليني أفكر شوي.',
+        'ماشي الحال؟', 'والله زمان عنك.', 'لسا الدنيا بخير.', 'عم بمزح معك بس.',
+        'إنت عنجد بتحكي؟', 'شو صاير معك؟', 'حاجة نكد بقى.', 'مو وقتها هالحكي.',
+        'شو جابك لهون؟', 'شو صار بالمشروع؟', 'سافر وما ودع!', 'ما عاد فيني اتحمل.',
+        'بدك تطول بالك شوي.', 'الله يرضى عليك.', 'شو ناوي تعمل؟', 'إيمتى الفطور؟',
+        'تفضل قعد هون.', 'ما في شي جديد؟', 'كلو تمام؟', 'يلا نلعب طاولة؟',
+        'أنا اليوم كتير تعبان.', 'رح جن من هالشغل!', 'مو معقول الأسعار!',
+        'اشتقتلك من قلبي.', 'ليش هيك مستعجل؟', 'فيني آخذ استراحة؟',
+        'لا تواخذني عالإزعاج.', 'شو رح تطبخ اليوم؟', 'الحمد لله على السلامة.',
+        'منيح إنك جيت.', 'أهلاً وسهلاً فيك.', 'لا تاكل هم، بسيطة.',
+        'هيك الدنيا بتمشي.', 'معك حق والله.', 'لا تزعل مني، مو قصدي.',
+        'هات لنشوف شو عندك.', 'شو قلتلك من قبل؟'
     ];
 
-    public function letter()
+    protected $msaSentences = [
+        'ذهبت إلى السوق لشراء بعض الحاجيات.', 'إن التعليم هو أساس تقدم الأمم.',
+        'العمل الجاد يؤدي إلى النجاح.', 'الوقت كالسيف إن لم تقطعه قطعك.',
+        'تُعَدُّ دمشق من أقدم مدن العالم.', 'تبدأ المدارس السورية في شهر أيلول.',
+        'السياحة في سوريا متنوعة وغنية بالثقافة.', 'قرأت كتاباً عن تاريخ بلاد الشام.',
+        'اللغة العربية من أجمل لغات العالم.', 'يلجأ الكثيرون إلى التعلم الذاتي عبر الإنترنت.',
+        'يُعَدُّ احترام الوقت من صفات الشخص الناجح.', 'تلعب الرياضة دوراً مهماً في الصحة الجسدية.',
+        'تسعى الحكومة إلى تحسين مستوى المعيشة.', 'يشتهر المطبخ السوري بتنوع أطباقه التقليدية.',
+        'تُعدُّ القيم الأخلاقية حجر الأساس لبناء المجتمع.', 'تتطلب المشاريع الناجحة تخطيطاً جيداً.',
+        'ساهمت الثورة الصناعية في تطور البشرية.', 'القراءة غذاء العقل والروح.',
+        'إن الإبداع يولد من رحم التحديات.', 'الصداقة الحقيقية تُختَبر في الأوقات الصعبة.',
+        'من المهم أن نحافظ على البيئة ونقلل التلوث.', 'التكنولوجيا أصبحت جزءاً لا يتجزأ من حياتنا اليومية.',
+        'تحتل اللغة العربية مكانة عظيمة بين لغات العالم.', 'يجب احترام آراء الآخرين مهما اختلفت.',
+        'الأمان نعمة يجب شكر الله عليها دائماً.', 'يتطلب النجاح استمرارية وتعلماً مستمراً.',
+        'تشهد المدن السورية نمواً عمرانياً متسارعاً.', 'تُعَدُّ دمشق مركزاً مهماً للفن والثقافة.',
+        'الحياة مليئة بالتحديات، ولكنها تستحق العيش.', 'من الأفضل أن تعمل بصمت وتدع نجاحك يتحدث.',
+        'السفر يفتح آفاقاً جديدة للفكر والرؤية.'
+    ];
+
+    public function letter(): string
     {
         return $this->letters[array_rand($this->letters)];
     }
 
-    public function word()
+    public function word(): string
     {
         return $this->words[array_rand($this->words)];
     }
 
-    public function sentence()
-    {
-        return $this->sentenceTemplates[array_rand($this->sentenceTemplates)];
-    }
-
-    public function paragraph($sentences = 3)
+    public function words(int $count = 5, bool $asArray = false, string $separator = ' '): array|string
     {
         $result = [];
-        for ($i = 0; $i < $sentences; $i++) {
-            $result[] = $this->sentence();
+
+        for ($i = 0; $i < $count; $i++) {
+            $result[] = $this->words[array_rand($this->words)];
         }
-        return implode(' ', $result);
+
+        return $asArray ? $result : implode($separator, $result);
     }
+
+
+    public function sentence($mode = 'mixed'): string
+    {
+        switch ($mode) {
+            case 'dialect':
+                $source = $this->dialectSentences;
+                break;
+            case 'msa':
+                $source = $this->msaSentences;
+                break;
+            case 'mixed':
+            default:
+                $source = rand(0, 1) ? $this->dialectSentences : $this->msaSentences;
+                break;
+        }
+
+        return $source[array_rand($source)];
+    }
+
+    public function sentences(int $count = 3,string $mode = 'mixed',bool $asArray = false,string $separator = ' ')
+    {
+        $result = [];
+
+        for ($i = 0; $i < $count; $i++) {
+            $result[] = $this->sentence($mode);
+        }
+
+        return $asArray ? $result : implode($separator, $result);
+    }
+
+
+
+    public function paragraph($minSentences = 3, $maxSentences = 7, $mode = 'mixed'): string
+    {
+        $sentenceCount = rand($minSentences, $maxSentences);
+        $sentences = [];
+
+        for ($i = 0; $i < $sentenceCount; $i++) {
+            switch ($mode) {
+                case 'dialect':
+                    $source = $this->dialectSentences;
+                    break;
+                case 'msa':
+                    $source = $this->msaSentences;
+                    break;
+                case 'mixed':
+                default:
+                    $source = rand(0, 1) ? $this->dialectSentences : $this->msaSentences;
+                    break;
+            }
+
+            $sentences[] = $source[array_rand($source)];
+        }
+
+        return implode(' ', $sentences);
+    }
+
 }
 
 
@@ -272,21 +518,66 @@ FILE: src/ArabFaker.php
 
 namespace Bit\ArabFaker;
 
+use Bit\ArabFaker\Providers\CompanyProvider;
+use Bit\ArabFaker\Providers\DateProvider;
 use Bit\ArabFaker\Providers\NameProvider;
 use Bit\ArabFaker\Providers\AddressProvider;
 use Bit\ArabFaker\Providers\PhoneProvider;
+use Bit\ArabFaker\Providers\CultureProvider;
+use Bit\ArabFaker\Providers\TextProvider;
+
 
 class ArabFaker
 {
+    protected $textProvider;
+
     protected $nameProvider;
     protected $addressProvider;
     protected $phoneProvider;
+    protected $dateProvider;
+    protected $companyProvider;
+    protected $cultureProvider;
+
 
     public function __construct()
     {
         $this->nameProvider = new NameProvider();
         $this->addressProvider = new AddressProvider();
         $this->phoneProvider = new PhoneProvider();
+        $this->dateProvider = new DateProvider();
+        $this->companyProvider = new CompanyProvider();
+        $this->cultureProvider = new CultureProvider();
+        $this->textProvider = new TextProvider();
+    }
+
+    public function syrianLetter()
+    {
+        return $this->textProvider->letter();
+    }
+
+    public function syrianWord()
+    {
+        return $this->textProvider->word();
+    }
+
+    public function syrianWords($count = 5, $asArray = false, $separator = ' ')
+    {
+        return $this->textProvider->words($count, $asArray, $separator);
+    }
+
+    public function syrianSentence($mode = 'mixed')
+    {
+        return $this->textProvider->sentence($mode);
+    }
+
+    public function syrianSentences($count = 3, $mode = 'mixed', $asArray = false, $separator = ' ')
+    {
+        return $this->textProvider->sentences($count, $mode, $asArray, $separator);
+    }
+
+    public function syrianParagraph($min = 3, $max = 7, $mode = 'mixed')
+    {
+        return $this->textProvider->paragraph($min, $max, $mode);
     }
 
     public function syrianName($gender = null)
@@ -328,6 +619,67 @@ class ArabFaker
     {
         return $this->phoneProvider->mtn($withCountryCode);
     }
+
+    public function syrianGregorianDate($format = 'd/m/Y')
+    {
+        return $this->dateProvider->gregorianDate($format);
+    }
+
+    public function syrianHijriDate($format = 'd/m/Y')
+    {
+        return $this->dateProvider->hijriDate($format);
+    }
+
+    public function syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')
+    {
+        return $this->dateProvider->randomGregorianDate($start, $end, $format);
+    }
+
+    public function syrianCompanyName()
+    {
+        return $this->companyProvider->companyName();
+    }
+
+    public function syrianJobTitle()
+    {
+        return $this->companyProvider->jobTitle();
+    }
+
+    public function syrianBusinessType()
+    {
+        return $this->companyProvider->businessType();
+    }
+
+    public function syrianFood()
+    {
+        return $this->cultureProvider->food();
+    }
+
+    public function syrianIdiom()
+    {
+        return $this->cultureProvider->idiom();
+    }
+
+    public function syrianProverb()
+    {
+        return $this->cultureProvider->proverb();
+    }
+
+    public function syrianTraditionalItem()
+    {
+        return $this->cultureProvider->traditionalItem();
+    }
+
+    public function syrianCulturalSentence()
+    {
+        $food = $this->cultureProvider->food();
+        $proverb = $this->cultureProvider->proverb();
+        $item = $this->cultureProvider->traditionalItem();
+
+        return "وأنت عم تاكل {$food} جنب {$item}، تذكّر المثل الشامي: \"{$proverb}\".";
+    }
+
+
 }
 
 
@@ -377,7 +729,8 @@ FILE: composer.json
     ],
     "require": {
         "php": ">=7.4",
-        "illuminate/support": ">=8.0"
+        "illuminate/support": ">=8.0",
+        "alkoumi/laravel-hijri-date": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -406,6 +759,9 @@ FILE: README-AR.md
 - عناوين سورية
 - أرقام هواتف سورية (موبايل، أرضي، سيريتل، MTN)
 - نصوص باللهجة السورية
+- التاريخ الهجري والميلادي بالتنسيق السوري للتواريخ
+- أسماء الشركات السورية والمسميات الوظيفية وأنواع الأعمال
+- الأطعمة السورية، والأقوال المأثورة، والأمثال الشعبية، والعناصر التقليدية
 - واجهة مشابهة لحزمة PHPFaker
 
 ## التثبيت
@@ -436,6 +792,29 @@ $faker->syrianSyriatel(); // مثال: "+963 93 123 4567"
 $faker->syrianMTN(); // مثال: "+963 94 123 4567"
 $faker->syrianLandline(); // مثال: "+963 11 123 4567"
 $faker->syrianLandline(false); // مثال: "011 123 4567"
+
+// التواريخ
+$faker->syrianGregorianDate(); // مثال: , "22/07/2025"
+$faker->syrianHijriDate();     // مثال: , "16/01/1447"
+$faker->syrianRandomGregorianDate('-2 years', 'now'); // مثال:, "05/06/2023"
+
+// الشركات
+$faker->syrianCompanyName();  // مثال: "شركة النور محدودة المسؤولية"
+// المسميات الوظيفية
+$faker->syrianJobTitle();     // مثال: "مهندس برمجيات"
+// أنواع الأعمال
+$faker->syrianBusinessType(); // مثال: "تكنولوجيا المعلومات"
+
+// الأطعمة السورية
+$faker->syrianFood();            // e.g., "شيش برك"
+// الأقوال المأثورة
+$faker->syrianIdiom();           // e.g., "بيضحك عالمشنقة"
+// الأمثال الشعبية
+$faker->syrianProverb();         // e.g., "كل تأخيرة فيها خيرة"
+// العناصر التقليدية
+$faker->syrianTraditionalItem(); // e.g., "مروحة يدوية"
+// جملة مؤلفة من المأكولات السورية والعاصر التقليدية والأمثال الشعبية
+$faker->syrianCulturalSentence(); // Output: وأنت عم تاكل محشي كوسا جنب صابون الغار، تذكّر المثل الشامي: "كل تأخيرة فيها خيرة".
 ```
 
 ### دمج مع لارافيل
@@ -453,6 +832,17 @@ php artisan vendor:publish --tag=config
 - `$faker->syrianSyriatel($withCountryCode = true)`
 - `$faker->syrianMTN($withCountryCode = true)`
 - `$faker->syrianLandline($withCountryCode = true)`
+- `$faker->syrianGregorianDate($format = 'd/m/Y')`
+- `$faker->syrianHijriDate($format = 'd/m/Y')`
+- `$faker->syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
+- `$faker->syrianCompanyName()`
+- `$faker->syrianJobTitle()`
+- `$faker->syrianBusinessType()`
+- `$faker->syrianFood()`
+- `$faker->syrianIdiom()`
+- `$faker->syrianProverb()`
+- `$faker->syrianTraditionalItem()`
+- `$faker->syrianCulturalSentence()`
 
 ## الرخصة
 MIT 
@@ -470,6 +860,9 @@ A PHP/Laravel package for generating culturally accurate fake data in Syrian Ara
 - Syrian addresses
 - Syrian phone numbers (mobile, landline, Syriatel, MTN)
 - Syrian dialect text
+- Gregorian and Hijri dates with Syrian format
+- Syrian company names, job titles, and business types
+- Syrian foods, idioms, proverbs, and traditional items
 - Faker-like API
 
 ## Installation
@@ -482,6 +875,19 @@ composer require bit/arab-faker
 use Bit\ArabFaker\ArabFaker;
 
 $faker = new ArabFaker();
+
+// Text and Paragraphs
+$faker->word(); // e.g., "مبسوط", "إيمتى", "سوريا", "رفيق", "عنجد"
+$faker->syrianWords(5); // e.g., "مرحبا كيفك عنجد شوي منيح"
+$faker->syrianWords(5, true); //e.g., ['مرحبا', 'كيفك', 'عنجد', 'شوي', 'منيح']
+$faker->syrianSentences(2); // e.g., "شو صاير معك؟ العمل الجاد يؤدي إلى النجاح."
+$faker->syrianSentences(2, 'msa', false, ' | '); // e.g., "ذهبت إلى السوق | إن التعليم هو أساس تقدم الأمم."
+$faker->syrianSentence(); // e.g., "شو صاير معك؟"
+$faker->syrianSentence('msa'); // e.g., "ذهبت إلى السوق لشراء بعض الحاجيات."
+$faker->syrianSentence('dialect'); // e.g., "خلص بكفي لهون."
+$faker->syrianParagraph(); // default mixed
+$faker->syrianParagraph(4, 6, 'msa'); // only Modern Standard Arabic
+$faker->syrianParagraph(5, 8, 'dialect'); // only Syrian dialect
 
 // Names
 $faker->syrianName(); // e.g., "علي الحلبي"
@@ -500,6 +906,31 @@ $faker->syrianSyriatel(); // e.g., "+963 93 123 4567"
 $faker->syrianMTN(); // e.g., "+963 94 123 4567"
 $faker->syrianLandline(); // e.g., "+963 11 123 4567"
 $faker->syrianLandline(false); // e.g., "011 123 4567"
+
+// Dates
+$faker->syrianGregorianDate(); // e.g., "22/07/2025"
+$faker->syrianHijriDate();     // e.g., "16/01/1447"
+$faker->syrianRandomGregorianDate('-2 years', 'now'); // e.g., "05/06/2023"
+
+// Companies
+$faker->syrianCompanyName();  // e.g., "شركة النور محدودة المسؤولية"
+
+// Job Titles
+$faker->syrianJobTitle();     // e.g., "مهندس برمجيات"
+
+// Business Types
+$faker->syrianBusinessType(); // e.g., "تكنولوجيا المعلومات"
+
+// Syrian foods
+$faker->syrianFood();            // e.g., "شيش برك"
+// idioms
+$faker->syrianIdiom();           // e.g., "بيضحك عالمشنقة"
+// proverbs
+$faker->syrianProverb();         // e.g., "كل تأخيرة فيها خيرة"
+// traditional items
+$faker->syrianTraditionalItem(); // e.g., "مروحة يدوية"
+// sentence of: Syrian foods, idioms, proverbs, and traditional items
+$faker->syrianCulturalSentence(); // Output: وأنت عم تاكل محشي كوسا جنب صابون الغار، تذكّر المثل الشامي: "كل تأخيرة فيها خيرة".
 ```
 
 ### Laravel Integration
@@ -509,6 +940,12 @@ php artisan vendor:publish --tag=config
 ```
 
 ## API
+- `$faker->syrianLetter()`
+- `$faker->syrianWord()`
+- `$faker->syrianWords($count = 5, $asArray = false, $separator = ' ')`
+- `$faker->syrianSentence($mode = 'mixed')`
+- `$faker->syrianSentences($count = 3, $mode = 'mixed', $asArray = false, $separator = ' ')`
+- `$faker->syrianParagraph($min = 3, $max = 7, $mode = 'mixed')`
 - `$faker->syrianName($gender = null)`
 - `$faker->syrianFirstName($gender = null)`
 - `$faker->syrianLastName()`
@@ -517,6 +954,17 @@ php artisan vendor:publish --tag=config
 - `$faker->syrianSyriatel($withCountryCode = true)`
 - `$faker->syrianMTN($withCountryCode = true)`
 - `$faker->syrianLandline($withCountryCode = true)`
+- `$faker->syrianGregorianDate($format = 'd/m/Y')`
+- `$faker->syrianHijriDate($format = 'd/m/Y')`
+- `$faker->syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
+- `$faker->syrianCompanyName()`
+- `$faker->syrianJobTitle()`
+- `$faker->syrianBusinessType()`
+- `$faker->syrianFood()`
+- `$faker->syrianIdiom()`
+- `$faker->syrianProverb()`
+- `$faker->syrianTraditionalItem()`
+- `$faker->syrianCulturalSentence()`
 
 ## License
 MIT

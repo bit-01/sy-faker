@@ -8,10 +8,13 @@ use Bit\ArabFaker\Providers\NameProvider;
 use Bit\ArabFaker\Providers\AddressProvider;
 use Bit\ArabFaker\Providers\PhoneProvider;
 use Bit\ArabFaker\Providers\CultureProvider;
+use Bit\ArabFaker\Providers\TextProvider;
 
 
 class ArabFaker
 {
+    protected $textProvider;
+
     protected $nameProvider;
     protected $addressProvider;
     protected $phoneProvider;
@@ -28,6 +31,37 @@ class ArabFaker
         $this->dateProvider = new DateProvider();
         $this->companyProvider = new CompanyProvider();
         $this->cultureProvider = new CultureProvider();
+        $this->textProvider = new TextProvider();
+    }
+
+    public function syrianLetter()
+    {
+        return $this->textProvider->letter();
+    }
+
+    public function syrianWord()
+    {
+        return $this->textProvider->word();
+    }
+
+    public function syrianWords($count = 5, $asArray = false, $separator = ' ')
+    {
+        return $this->textProvider->words($count, $asArray, $separator);
+    }
+
+    public function syrianSentence($mode = 'mixed')
+    {
+        return $this->textProvider->sentence($mode);
+    }
+
+    public function syrianSentences($count = 3, $mode = 'mixed', $asArray = false, $separator = ' ')
+    {
+        return $this->textProvider->sentences($count, $mode, $asArray, $separator);
+    }
+
+    public function syrianParagraph($min = 3, $max = 7, $mode = 'mixed')
+    {
+        return $this->textProvider->paragraph($min, $max, $mode);
     }
 
     public function syrianName($gender = null)
