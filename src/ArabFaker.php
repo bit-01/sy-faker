@@ -64,6 +64,11 @@ class ArabFaker
         return $this->textProvider->paragraph($min, $max, $mode);
     }
 
+    public function syrianTitle($gender = null)
+    {
+        return $this->nameProvider->title($gender);
+    }
+
     public function syrianName($gender = null)
     {
         return $this->nameProvider->name($gender);
