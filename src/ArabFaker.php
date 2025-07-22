@@ -7,6 +7,8 @@ use Bit\ArabFaker\Providers\DateProvider;
 use Bit\ArabFaker\Providers\NameProvider;
 use Bit\ArabFaker\Providers\AddressProvider;
 use Bit\ArabFaker\Providers\PhoneProvider;
+use Bit\ArabFaker\Providers\CultureProvider;
+
 
 class ArabFaker
 {
@@ -15,6 +17,8 @@ class ArabFaker
     protected $phoneProvider;
     protected $dateProvider;
     protected $companyProvider;
+    protected $cultureProvider;
+
 
     public function __construct()
     {
@@ -23,6 +27,7 @@ class ArabFaker
         $this->phoneProvider = new PhoneProvider();
         $this->dateProvider = new DateProvider();
         $this->companyProvider = new CompanyProvider();
+        $this->cultureProvider = new CultureProvider();
     }
 
     public function syrianName($gender = null)
@@ -94,4 +99,35 @@ class ArabFaker
     {
         return $this->companyProvider->businessType();
     }
+
+    public function syrianFood()
+    {
+        return $this->cultureProvider->food();
+    }
+
+    public function syrianIdiom()
+    {
+        return $this->cultureProvider->idiom();
+    }
+
+    public function syrianProverb()
+    {
+        return $this->cultureProvider->proverb();
+    }
+
+    public function syrianTraditionalItem()
+    {
+        return $this->cultureProvider->traditionalItem();
+    }
+
+    public function syrianCulturalSentence()
+    {
+        $food = $this->cultureProvider->food();
+        $proverb = $this->cultureProvider->proverb();
+        $item = $this->cultureProvider->traditionalItem();
+
+        return "وأنت عم تاكل {$food} جنب {$item}، تذكّر المثل الشامي: \"{$proverb}\".";
+    }
+
+
 }

@@ -8,6 +8,8 @@
 - أرقام هواتف سورية (موبايل، أرضي، سيريتل، MTN)
 - نصوص باللهجة السورية
 - التاريخ الهجري والميلادي بالتنسيق السوري للتواريخ
+- أسماء الشركات السورية والمسميات الوظيفية وأنواع الأعمال
+- الأطعمة السورية، والأقوال المأثورة، والأمثال الشعبية، والعناصر التقليدية
 - واجهة مشابهة لحزمة PHPFaker
 
 ## التثبيت
@@ -46,8 +48,21 @@ $faker->syrianRandomGregorianDate('-2 years', 'now'); // مثال:, "05/06/2023"
 
 // الشركات
 $faker->syrianCompanyName();  // مثال: "شركة النور محدودة المسؤولية"
+// المسميات الوظيفية
 $faker->syrianJobTitle();     // مثال: "مهندس برمجيات"
+// أنواع الأعمال
 $faker->syrianBusinessType(); // مثال: "تكنولوجيا المعلومات"
+
+// الأطعمة السورية
+$faker->syrianFood();            // e.g., "شيش برك"
+// الأقوال المأثورة
+$faker->syrianIdiom();           // e.g., "بيضحك عالمشنقة"
+// الأمثال الشعبية
+$faker->syrianProverb();         // e.g., "كل تأخيرة فيها خيرة"
+// العناصر التقليدية
+$faker->syrianTraditionalItem(); // e.g., "مروحة يدوية"
+// جملة مؤلفة من المأكولات السورية والعاصر التقليدية والأمثال الشعبية
+$faker->syrianCulturalSentence(); // Output: وأنت عم تاكل محشي كوسا جنب صابون الغار، تذكّر المثل الشامي: "كل تأخيرة فيها خيرة".
 ```
 
 ### دمج مع لارافيل
@@ -71,6 +86,11 @@ php artisan vendor:publish --tag=config
 - `$faker->syrianCompanyName()`
 - `$faker->syrianJobTitle()`
 - `$faker->syrianBusinessType()`
+- `$faker->syrianFood()`
+- `$faker->syrianIdiom()`
+- `$faker->syrianProverb()`
+- `$faker->syrianTraditionalItem()`
+- `$faker->syrianCulturalSentence()`
 
 ## الرخصة
 MIT 

@@ -9,6 +9,7 @@ A PHP/Laravel package for generating culturally accurate fake data in Syrian Ara
 - Syrian dialect text
 - Gregorian and Hijri dates with Syrian format
 - Syrian company names, job titles, and business types
+- Syrian foods, idioms, proverbs, and traditional items
 - Faker-like API
 
 ## Installation
@@ -47,8 +48,23 @@ $faker->syrianRandomGregorianDate('-2 years', 'now'); // e.g., "05/06/2023"
 
 // Companies
 $faker->syrianCompanyName();  // e.g., "شركة النور محدودة المسؤولية"
+
+// Job Titles
 $faker->syrianJobTitle();     // e.g., "مهندس برمجيات"
+
+// Business Types
 $faker->syrianBusinessType(); // e.g., "تكنولوجيا المعلومات"
+
+// Syrian foods
+$faker->syrianFood();            // e.g., "شيش برك"
+// idioms
+$faker->syrianIdiom();           // e.g., "بيضحك عالمشنقة"
+// proverbs
+$faker->syrianProverb();         // e.g., "كل تأخيرة فيها خيرة"
+// traditional items
+$faker->syrianTraditionalItem(); // e.g., "مروحة يدوية"
+// sentence of: Syrian foods, idioms, proverbs, and traditional items
+$faker->syrianCulturalSentence(); // Output: وأنت عم تاكل محشي كوسا جنب صابون الغار، تذكّر المثل الشامي: "كل تأخيرة فيها خيرة".
 ```
 
 ### Laravel Integration
@@ -72,7 +88,11 @@ php artisan vendor:publish --tag=config
 - `$faker->syrianCompanyName()`
 - `$faker->syrianJobTitle()`
 - `$faker->syrianBusinessType()`
-
+- `$faker->syrianFood()`
+- `$faker->syrianIdiom()`
+- `$faker->syrianProverb()`
+- `$faker->syrianTraditionalItem()`
+- `$faker->syrianCulturalSentence()`
 
 ## License
 MIT 
