@@ -2,12 +2,30 @@
 
 namespace Bit\ArabFaker\Providers;
 
+/**
+ * Class TextProvider
+ *
+ * Provides Arabic text generation, including letters, words, dialectal and MSA sentences, and paragraphs.
+ *
+ * @package Bit\ArabFaker\Providers
+ * @author Bassel Aflak <bassel.af@gmail.com>
+ */
 class TextProvider
 {
+    /**
+    * Arabic letters (alphabet).
+    *
+    * @var string[]
+    */
     protected $letters = [
         'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'
     ];
 
+    /**
+    * Common Arabic words (mostly spoken dialect).
+    *
+    * @var string[]
+    */
     protected $words = [
         'مرحبا', 'أهلين', 'السلام', 'أهلا', 'هلا', 'صباحو', 'مسّا', 'يسعدلي صباحك',
         'كيفك', 'شو', 'ليش', 'هيك', 'يعني', 'عنجد', 'طيب', 'خلص', 'بعدين', 'إيمتى', 'قديش',
@@ -22,7 +40,11 @@ class TextProvider
         'كتابة', 'كلمة', 'ضحك', 'بكاء', 'تليفون', 'واتساب', 'دقيقة', 'ساعة', 'بكرة', 'هلأ'
     ];
 
-
+    /**
+    * Arabic spoken dialect sentences.
+    *
+    * @var string[]
+    */
     protected $dialectSentences = [
         'شو أخبارك اليوم؟', 'كيف الجو عندكم؟', 'إيمتى رح نلتقي؟', 'لسا ما خلصت شغلي.',
         'عنجد الموضوع مهم كتير.', 'ليش ما إجيت مبارح؟', 'خلص بكفي لهون.', 'معقول هيك صار؟',
@@ -40,6 +62,11 @@ class TextProvider
         'هات لنشوف شو عندك.', 'شو قلتلك من قبل؟'
     ];
 
+    /**
+    * Modern Standard Arabic (MSA) sentences.
+    *
+    * @var string[]
+    */
     protected $msaSentences = [
         'ذهبت إلى السوق لشراء بعض الحاجيات.', 'إن التعليم هو أساس تقدم الأمم.',
         'العمل الجاد يؤدي إلى النجاح.', 'الوقت كالسيف إن لم تقطعه قطعك.',
@@ -59,16 +86,36 @@ class TextProvider
         'السفر يفتح آفاقاً جديدة للفكر والرؤية.'
     ];
 
+
+    /**
+    * Get a random Arabic letter.
+    *
+    * @return string Random letter.
+    */
     public function letter(): string
     {
         return $this->letters[array_rand($this->letters)];
     }
 
+    /**
+    * Get a single Arabic word.
+    *
+    * @return string Random word.
+    */
     public function word(): string
     {
         return $this->words[array_rand($this->words)];
     }
 
+    /**
+    * Get multiple Arabic words.
+    *
+    * @param int         $count     Optional. Number of words. Default 5.
+    * @param bool        $asArray   Optional. Return as array. Default false.
+    * @param string      $separator Optional. Word separator. Default space.
+    *
+    * @return string[]|string Array or string of words.
+    */
     public function words(int $count = 5, bool $asArray = false, string $separator = ' '): array|string
     {
         $result = [];
@@ -81,7 +128,14 @@ class TextProvider
     }
 
 
-    public function sentence($mode = 'mixed'): string
+    /**
+    * Get a random sentence based on mode.
+    *
+    * @param string $mode Optional. 'dialect', 'msa', or 'mixed'. Default 'mixed'.
+    *
+    * @return string Random sentence.
+    */
+    public function sentence(string $mode = 'mixed'|'dialect'|'msa'): string
     {
         switch ($mode) {
             case 'dialect':
@@ -99,7 +153,17 @@ class TextProvider
         return $source[array_rand($source)];
     }
 
-    public function sentences(int $count = 3,string $mode = 'mixed',bool $asArray = false,string $separator = ' ')
+    /**
+     * Get multiple sentences.
+     *
+     * @param int    $count     Optional. Number of sentences. Default 3.
+     * @param string $mode      Optional. Sentence mode. Default 'mixed'.
+     * @param bool   $asArray   Optional. Return as array. Default false.
+     * @param string $separator Optional. Separator if not array. Default space.
+     *
+     * @return string[]|string Sentences as array or string.
+     */
+    public function sentences(int $count = 3,string $mode = 'mixed'|'dialect'|'msa', bool $asArray = false, string $separator = ' '): array|string
     {
         $result = [];
 
@@ -112,7 +176,16 @@ class TextProvider
 
 
 
-    public function paragraph($minSentences = 3, $maxSentences = 7, $mode = 'mixed'): string
+    /**
+    * Generate a paragraph composed of several sentences.
+    *
+    * @param int    $minSentences Minimum number of sentences. Default 3.
+    * @param int    $maxSentences Maximum number of sentences. Default 7.
+    * @param string $mode         Sentence mode. Default 'mixed'.
+    *
+    * @return string Paragraph text.
+    */
+    public function paragraph(int $minSentences = 3, int $maxSentences = 7, string $mode = 'mixed'|'dialect'|'msa'): string
     {
         $sentenceCount = rand($minSentences, $maxSentences);
         $sentences = [];

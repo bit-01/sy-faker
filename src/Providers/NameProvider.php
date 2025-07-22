@@ -2,8 +2,23 @@
 
 namespace Bit\ArabFaker\Providers;
 
+/**
+ * Class NameProvider
+ *
+ * Generates random Arabic names including first names, last names, and titles.
+ * Supports male, female, or mixed name generation.
+ *
+ * @package Bit\ArabFaker\Providers
+ * @author Bassel Aflak <bassel.af@gmail.com>
+ */
 class NameProvider
 {
+
+    /**
+     * List of male first names.
+     *
+     * @var string[]
+     */
     protected $maleFirstNames = [
         'علي', 'محمد', 'أحمد', 'محمود', 'حسن', 'حسين', 'يوسف', 'عمر', 'رامي', 'سامر',
         'فادي', 'فراس', 'وائل', 'باسل', 'شادي', 'طارق', 'نزار', 'جود', 'كرم', 'أنس',
@@ -14,6 +29,11 @@ class NameProvider
         'عبد الجليل', 'عبد الحفيظ', 'عبد الحكيم', 'عبد الدايم', 'عبد الدائم', 'عبد الرؤوف'
     ];
 
+    /**
+     * List of female first names.
+     *
+     * @var string[]
+     */
     protected $femaleFirstNames = [
         'مريم', 'سارة', 'هبة', 'دينا', 'رنا', 'نور', 'لينا', 'سلمى', 'ريم', 'فرح',
         'جمانة', 'سوسن', 'هدى', 'منى', 'ياسمين', 'رغد', 'سيرين', 'شذى', 'غادة', 'عبير',
@@ -24,6 +44,11 @@ class NameProvider
         'آلاء', 'صفية', 'منار', 'ليان', 'مي', 'كارمن', 'بتول', 'ميس', 'سدن', 'تمارا'
     ];
 
+    /**
+     * List of Arabic last names.
+     *
+     * @var string[]
+     */
     protected $lastNames = [
         'الحلبي', 'الدمشقي', 'العلي', 'الخطيب', 'الأسعد', 'الحموي', 'اليوسف', 'الشيخ', 'الزهر', 'الرفاعي',
         'الطويل', 'السباعي', 'الملقي', 'الزعبي', 'الديب', 'البرهو', 'الطاهر', 'النجار', 'العباس', 'القدسي',
@@ -34,8 +59,14 @@ class NameProvider
         'الريّس', 'الحافظ', 'الدندشي', 'المير', 'البلخي', 'الروضة', 'البني', 'البقاعي', 'النبهان', 'الحسينو'
     ];
 
-
-    public function title($gender = null|'male'|'female'): string
+    /**
+    * Get an Arabic title based on gender.
+    *
+    * @param null|string $gender Optional. 'male', 'female', or null for random. Default null.
+    *
+    * @return string Arabic title.
+    */
+    public function title(string|null $gender = null|'male'|'female'): string
     {
         $maleTitles = ['السيد', 'الأستاذ', 'الدكتور', 'الأخ', "الحاج"];
         $femaleTitles = ['السيدة', 'الآنسة', 'الدكتورة', 'الأخت', "الحاجة"];
@@ -53,8 +84,14 @@ class NameProvider
         }
     }
 
-
-    public function name($gender = null)
+    /**
+     * Get a full name (first + last) based on gender.
+     *
+     * @param string|null $gender Optional. 'male', 'female', or null for random. Default null.
+     *
+     * @return string Full name.
+     */
+    public function name(string|null $gender = null|'male'|'female'): string
     {
         if ($gender === 'male') {
             $first = $this->firstName('male');
@@ -67,7 +104,14 @@ class NameProvider
         return "$first $last";
     }
 
-    public function firstName($gender = null)
+    /**
+    * Get a first name based on gender.
+    *
+    * @param string|null $gender Optional. 'male', 'female', or null for random. Default null.
+    *
+    * @return string First name.
+    */
+    public function firstName(string|null $gender = null|'male'|'female'): string
     {
         if ($gender === 'male') {
             return $this->maleFirstNames[array_rand($this->maleFirstNames)];
@@ -79,7 +123,12 @@ class NameProvider
         }
     }
 
-    public function lastName()
+    /**
+    * Get a random Arabic last name.
+    *
+    * @return string Last name.
+    */
+    public function lastName(): string
     {
         return $this->lastNames[array_rand($this->lastNames)];
     }

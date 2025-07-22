@@ -8,18 +8,14 @@ class ArabFakerServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/syrian-faker.php', 'syrian-faker');
-        $this->app->singleton('syrian-faker', function () {
-            return new SyrianFaker();
+        $this->mergeConfigFrom(__DIR__.'/../config/arab-faker.php', 'arab-faker');
+        $this->app->singleton('arab-faker', function () {
+            return new ArabFaker();
         });
     }
 
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/syrian-faker.php' => config_path('syrian-faker.php'),
-            ], 'config');
-        }
+
     }
 }

@@ -9,6 +9,7 @@ namespace Bit\ArabFaker\Providers;
  * and street names. Useful for generating random addresses localized for Syrian regions.
  *
  * @package Bit\ArabFaker\Providers
+ * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class AddressProvider
 {
