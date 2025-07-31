@@ -1,13 +1,13 @@
 <?php
 
-namespace Bit\ArabFaker\Providers;
+namespace Bit\SyFaker\Providers;
 
 /**
 * Class CompanyProvider
 *
 * Provides fake but realistic company-related data in Arabic for use in testing and seeding.
 *
-* @package Bit\ArabFaker\Providers
+* @package Bit\SyFaker\Providers
 * @author Bassel Aflak <bassel.af@gmail.com>
 */
 class CompanyProvider

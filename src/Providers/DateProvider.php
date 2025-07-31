@@ -1,6 +1,6 @@
 <?php
 
-namespace Bit\ArabFaker\Providers;
+namespace Bit\SyFaker\Providers;
 
 use IntlDateFormatter;
 use DateTime;
@@ -12,7 +12,7 @@ use Alkoumi\LaravelHijriDate\Hijri;
  * Provides localized Gregorian and Hijri date formatting for Arab locales.
  * Includes options for current and randomly generated dates.
  *
- * @package Bit\ArabFaker\Providers
+ * @package Bit\SyFaker\Providers
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class DateProvider

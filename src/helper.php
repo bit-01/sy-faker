@@ -1,11 +1,11 @@
 <?php
 
-use Bit\ArabFaker;
+use Bit\SyFaker;
 
-use Bit\ArabFaker\ArabFaker as arFaker;
+use Bit\SyFaker\SyFaker as arFaker;
 
-if (!function_exists('arabFaker')) {
-    function arabFaker(){
+if (!function_exists('syFaker')) {
+    function syFaker(){
         return new arFaker();
     }
 }

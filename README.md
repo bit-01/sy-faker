@@ -1,4 +1,4 @@
-# ArabFaker
+# SyFaker
 
 A PHP/Laravel package for generating culturally accurate fake data in Syrian Arabic.
 
@@ -20,9 +20,9 @@ composer require bit/arab-faker
 
 ## Usage
 ```php
-use Bit\ArabFaker\ArabFaker;
+use Bit\SyFaker\SyFaker;
 
-$syFaker = new ArabFaker();
+$syFaker = new SyFaker();
 
 // Text and Paragraphs
 $faker->word(); // e.g., "مبسوط", "إيمتى", "سوريا", "رفيق", "عنجد"
@@ -84,7 +84,15 @@ $faker->culturalSentence(); // Output: وأنت عم تاكل محشي كوسا 
 
 ### Laravel Integration
 The package auto-registers via Service Provider and provides a helper function
+```php
+use Bit\SyFaker\SyFaker;
 
+$syFaker = new SyFaker();
+
+// or you can use the helper function e.g.:
+syFaker()->name();
+
+```
 ## API
 - `$faker->letter()`
 - `$faker->word()`

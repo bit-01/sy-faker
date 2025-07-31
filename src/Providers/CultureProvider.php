@@ -1,6 +1,6 @@
 <?php
 
-namespace Bit\ArabFaker\Providers;
+namespace Bit\SyFaker\Providers;
 
 /**
  * Class CultureProvider
@@ -8,7 +8,7 @@ namespace Bit\ArabFaker\Providers;
  * Provides random cultural content from Arab traditions.
  * Includes traditional foods, idioms, proverbs, and items.
  *
- * @package Bit\ArabFaker\Providers
+ * @package Bit\SyFaker\Providers
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class CultureProvider

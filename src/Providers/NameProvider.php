@@ -1,6 +1,6 @@
 <?php
 
-namespace Bit\ArabFaker\Providers;
+namespace Bit\SyFaker\Providers;
 
 /**
  * Class NameProvider
@@ -8,7 +8,7 @@ namespace Bit\ArabFaker\Providers;
  * Generates random Arabic names including first names, last names, and titles.
  * Supports male, female, or mixed name generation.
  *
- * @package Bit\ArabFaker\Providers
+ * @package Bit\SyFaker\Providers
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class NameProvider

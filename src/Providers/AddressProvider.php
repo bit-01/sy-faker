@@ -1,6 +1,6 @@
 <?php
 
-namespace Bit\ArabFaker\Providers;
+namespace Bit\SyFaker\Providers;
 
 /**
  * Class AddressProvider
@@ -8,7 +8,7 @@ namespace Bit\ArabFaker\Providers;
  * Provides realistic Arabic (Syrian) address components including cities, neighborhoods,
  * and street names. Useful for generating random addresses localized for Syrian regions.
  *
- * @package Bit\ArabFaker\Providers
+ * @package Bit\SyFaker\Providers
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class AddressProvider

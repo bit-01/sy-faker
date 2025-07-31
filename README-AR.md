@@ -1,4 +1,4 @@
-# ArabFaker
+# SyFaker
 
 حزمة PHP/Laravel لتوليد بيانات وهمية دقيقة ثقافيًا باللهجة السورية.
 
@@ -19,9 +19,9 @@ composer require bit/arab-faker
 
 ## الاستخدام
 ```php
-use Bit\ArabFaker\ArabFaker;
+use Bit\SyFaker\SyFaker;
 
-$faker = new ArabFaker();
+$faker = new SyFaker();
 
 // الأسماء
 $faker->syrianName(); // مثال: "علي الحلبي"

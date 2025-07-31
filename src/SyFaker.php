@@ -1,24 +1,24 @@
 <?php
 
-namespace Bit\ArabFaker;
+namespace Bit\SyFaker;
 
-use Bit\ArabFaker\Providers\CompanyProvider;
-use Bit\ArabFaker\Providers\DateProvider;
-use Bit\ArabFaker\Providers\NameProvider;
-use Bit\ArabFaker\Providers\AddressProvider;
-use Bit\ArabFaker\Providers\PhoneProvider;
-use Bit\ArabFaker\Providers\CultureProvider;
-use Bit\ArabFaker\Providers\TextProvider;
+use Bit\SyFaker\Providers\CompanyProvider;
+use Bit\SyFaker\Providers\DateProvider;
+use Bit\SyFaker\Providers\NameProvider;
+use Bit\SyFaker\Providers\AddressProvider;
+use Bit\SyFaker\Providers\PhoneProvider;
+use Bit\SyFaker\Providers\CultureProvider;
+use Bit\SyFaker\Providers\TextProvider;
 
 /**
- * Class ArabFaker
+ * Class SyFaker
  *
  * Facade for generating various types of Arabic (mostly ) fake data.
  *
- * @package Bit\ArabFaker
+ * @package Bit\SyFaker
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
-class ArabFaker
+class SyFaker
 {
     /**
      * @var TextProvider
@@ -56,7 +56,7 @@ class ArabFaker
     protected $cultureProvider;
 
     /**
-     * ArabFaker constructor.
+     * SyFaker constructor.
      *
      * @since 1.0.0
      */

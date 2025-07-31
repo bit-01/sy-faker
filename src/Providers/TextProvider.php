@@ -1,13 +1,13 @@
 <?php
 
-namespace Bit\ArabFaker\Providers;
+namespace Bit\SyFaker\Providers;
 
 /**
  * Class TextProvider
  *
  * Provides Arabic text generation, including letters, words, dialectal and MSA sentences, and paragraphs.
  *
- * @package Bit\ArabFaker\Providers
+ * @package Bit\SyFaker\Providers
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class TextProvider

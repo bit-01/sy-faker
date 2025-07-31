@@ -1,13 +1,13 @@
 <?php
 
-namespace Bit\ArabFaker\Providers;
+namespace Bit\SyFaker\Providers;
 
 /**
  * Class PhoneProvider
  *
  * Generates random Syrian phone numbers for mobile (Syriatel, MTN) and landline formats.
  *
- * @package Bit\ArabFaker\Providers
+ * @package Bit\SyFaker\Providers
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class PhoneProvider
