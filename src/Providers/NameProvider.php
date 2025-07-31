@@ -9,6 +9,7 @@ namespace Bit\SyFaker\Providers;
  * Supports male, female, or mixed name generation.
  *
  * @package Bit\SyFaker\Providers
+ * @license MIT
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class NameProvider

@@ -9,6 +9,7 @@ namespace Bit\SyFaker\Providers;
  * Includes traditional foods, idioms, proverbs, and items.
  *
  * @package Bit\SyFaker\Providers
+ * @license MIT
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class CultureProvider

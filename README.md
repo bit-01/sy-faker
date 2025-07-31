@@ -1,9 +1,25 @@
-# SyFaker
 
-A PHP/Laravel package for generating culturally accurate fake data in Syrian Arabic.
+# SyFaker
+![Laravel](https://img.shields.io/badge/Laravel-8–12-f53003?style=flat&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-7.4–8.4-4F5B93?style=flat&logo=php&logoColor=white)
+![License](https://img.shields.io/github/license/bit-01/sy-faker?style=flat)
+![Packagist Version](https://img.shields.io/packagist/v/bit/sy-faker?style=flat)
+![Downloads](https://img.shields.io/packagist/dt/bit/sy-faker?style=flat)
+
+A PHP package for generating realistic Syrian Arabic fake data—names, addresses, text, and more. Designed for Laravel 8–12 with a Faker-like API, it delivers authentic Syrian dialect content, from Damascene streets to Aleppine names. Perfect for testing, seeding databases, or placeholder content with local flavor.
+
+## Index
+1. [Features](#features)
+1. [Installation](#installation)
+1. [Usage](#usage)
+1. [Laravel Integration](#laravel-integration)
+1. [API](#api)
+1. [Laravel & PHP Compatibility](#-laravel--php-compatibility)
+1. [License](#license)
+1. [Arabic Readme File](./README-AR.md)
 
 ## Features
-- Syrian Text  and paragraphs
+- Syrian Text and paragraphs
 - Syrian names
 - Syrian addresses
 - Syrian phone numbers (mobile, landline, Syriatel, MTN)
@@ -15,7 +31,7 @@ A PHP/Laravel package for generating culturally accurate fake data in Syrian Ara
 
 ## Installation
 ```bash
-composer require bit/arab-faker
+composer require bit/sy-faker
 ```
 
 ## Usage
@@ -118,8 +134,24 @@ syFaker()->name();
 - `$faker->food()`
 - `$faker->idiom()`
 - `$faker->proverb()`
-- `$faker->TraditionalItem()`
+- `$faker->traditionalItem()`
 - `$faker->culturalSentence()`
+
+## ✅ Laravel & PHP Compatibility
+
+| Laravel Version | PHP 7.4 | PHP 8.0 | PHP 8.1 | PHP 8.2 | PHP 8.3 | PHP 8.4 |
+|-----------------|---------|---------|---------|---------|---------|---------|
+| Laravel 8       | ✅      | ✅      | ✅      | ✅      | ❌      | ❌      |
+| Laravel 9       | ❌      | ✅      | ✅      | ✅      | ✅      | ❌      |
+| Laravel 10      | ❌      | ✅      | ✅      | ✅      | ✅      | ✅      |
+| Laravel 11      | ❌      | ❌      | ✅      | ✅      | ✅      | ✅      |
+| Laravel 12      | ❌      | ❌      | ✅      | ✅      | ✅      | ✅      |
+
+
+> ❌ = Not supported  
+> ✅ = Fully supported
+
+
 
 ## License
 MIT 

@@ -13,9 +13,10 @@ use Bit\SyFaker\Providers\TextProvider;
 /**
  * Class SyFaker
  *
- * Facade for generating various types of Arabic (mostly ) fake data.
+ * Facade for generating various types of Arabic (mostly) fake data.
  *
  * @package Bit\SyFaker
+ * @license MIT
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class SyFaker

@@ -9,6 +9,7 @@ namespace Bit\SyFaker\Providers;
  * and street names. Useful for generating random addresses localized for Syrian regions.
  *
  * @package Bit\SyFaker\Providers
+ * @license MIT
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class AddressProvider

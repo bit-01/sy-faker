@@ -1,96 +1,156 @@
-# SyFaker
 
-حزمة PHP/Laravel لتوليد بيانات وهمية دقيقة ثقافيًا باللهجة السورية.
+# SyFaker
+![Laravel](https://img.shields.io/badge/Laravel-8–12-f53003?style=flat&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-7.4–8.4-4F5B93?style=flat&logo=php&logoColor=white)
+![License](https://img.shields.io/github/license/bit-01/sy-faker?style=flat)
+![Packagist Version](https://img.shields.io/packagist/v/bit/sy-faker?style=flat)
+![Downloads](https://img.shields.io/packagist/dt/bit/sy-faker?style=flat)
+
+حزمة PHP لتوليد بيانات سورية واقعية زائفة — أسماء، عناوين، نصوص والمزيد. مصممة للعمل مع Laravel من الإصدار 8 إلى 12، وتوفر محتوى أصيلًا باللهجة السورية من شوارع دمشق إلى أسماء حلبية. مثالية للاختبارات، ملء قواعد البيانات، أو محتوى مؤقت بنكهة محلية.
+
+## الفهرس
+1. [الميزات](#الميزات)
+1. [التثبيت](#التثبيت)
+1. [الاستخدام](#الاستخدام)
+    1. [الاستخدام مع Laravel](#الاستخدام-مع-laravel)
+1. [واجهة البرمجة(API)](#واجهة-البرمجة-api)
+1. [التوافق مع Laravel و PHP](#-التوافق-مع-laravel-و-php)
+1. [الرخصة](#الرخصة)
+1. [ملف الاستخدام باللغة الانكليزية](./README.md)
 
 ## الميزات
+- نصوص وفقرة باللهجة السورية
 - أسماء سورية
 - عناوين سورية
 - أرقام هواتف سورية (موبايل، أرضي، سيريتل، MTN)
 - نصوص باللهجة السورية
-- التاريخ الهجري والميلادي بالتنسيق السوري للتواريخ
-- أسماء الشركات السورية والمسميات الوظيفية وأنواع الأعمال
-- الأطعمة السورية، والأقوال المأثورة، والأمثال الشعبية، والعناصر التقليدية
-- واجهة مشابهة لحزمة PHPFaker
+- تواريخ ميلادية وهجرية بتنسيق سوري
+- أسماء شركات، مسميات وظيفية، وأنواع أنشطة تجارية سورية
+- أطعمة، أمثال، حكم، وعناصر تراثية سورية
+- واجهة استخدام مشابهة لـ Faker
+
 
 ## التثبيت
 ```bash
-composer require bit/arab-faker
+composer require bit/sy-faker
 ```
 
 ## الاستخدام
 ```php
 use Bit\SyFaker\SyFaker;
 
-$faker = new SyFaker();
+$syFaker = new SyFaker();
+
+// النصوص والفقرات
+$faker->word(); // مثل: "مبسوط", "إيمتى", "سوريا", "رفيق", "عنجد"
+$faker->words(5); // مثل: "مرحبا كيفك عنجد شوي منيح"
+$faker->words(5, true); // مثل: ['مرحبا', 'كيفك', 'عنجد', 'شوي', 'منيح']
+$faker->sentences(2); // مثل: "شو صاير معك؟ العمل الجاد يؤدي إلى النجاح."
+$faker->sentences(2, 'msa', false, ' | '); // مثل: "ذهبت إلى السوق | إن التعليم هو أساس تقدم الأمم."
+$faker->sentence(); // مثل: "شو صاير معك؟"
+$faker->sentence('msa'); // مثل: "ذهبت إلى السوق لشراء بعض الحاجيات."
+$faker->sentence('dialect'); // مثل: "خلص بكفي لهون."
+$faker->paragraph(); // الوضع الافتراضي مختلط
+$faker->paragraph(4, 6, 'msa'); // فقط العربية الفصحى
+$faker->paragraph(5, 8, 'dialect'); // فقط اللهجة السورية
 
 // الأسماء
-$faker->syrianName(); // مثال: "علي الحلبي"
-$faker->syrianFirstName(); // مثال: "مريم"
-$faker->syrianLastName(); // مثال: "الدمشقي"
+$faker->name(); // مثل: "علي الحلبي"
+$faker->firstName(); // مثل: "مريم"
+$faker->lastName(); // مثل: "الدمشقي"
 
 // العناوين
-$faker->syrianAddress(); // مثال: "دمشق، المزة، شارع الحمرا، بناء رقم 12"
+$faker->address(); // مثل: "دمشق، المزة، شارع الحمرا، بناء رقم 12"
 
 // أرقام الهواتف
-$faker->syrianMobile(); // مثال: "+963 93 123 4567" (شركة عشوائية)
-$faker->syrianMobile(false); // مثال: "093 123 4567" (بدون رمز دولي)
-$faker->syrianMobile(true, 'syriatel'); // مثال: "+963 93 123 4567" (سيريتل)
-$faker->syrianMobile(true, 'mtn'); // مثال: "+963 94 123 4567" (MTN)
-$faker->syrianSyriatel(); // مثال: "+963 93 123 4567"
-$faker->syrianMTN(); // مثال: "+963 94 123 4567"
-$faker->syrianLandline(); // مثال: "+963 11 123 4567"
-$faker->syrianLandline(false); // مثال: "011 123 4567"
+$faker->mobile(); // مثل: "+963 93 123 4567"
+$faker->mobile(false); // مثل: "093 123 4567"
+$faker->mobile(true, 'syriatel'); // مثل: "+963 93 123 4567"
+$faker->mobile(true, 'mtn'); // مثل: "+963 94 123 4567"
+$faker->syriatel(); // مثل: "+963 93 123 4567"
+$faker->mtn(); // مثل: "+963 94 123 4567"
+$faker->landline(); // مثل: "+963 11 123 4567"
+$faker->landline(false); // مثل: "011 123 4567"
 
 // التواريخ
-$faker->syrianGregorianDate(); // مثال: , "22/07/2025"
-$faker->syrianHijriDate();     // مثال: , "16/01/1447"
-$faker->syrianRandomGregorianDate('-2 years', 'now'); // مثال:, "05/06/2023"
+$faker->gregorianDate(); // مثل: "22/07/2025"
+$faker->hijriDate();     // مثل: "16/01/1447"
+$faker->randomGregorianDate('-2 years', 'now'); // مثل: "05/06/2023"
+$faker->randomhijriDateDate('-2 years', 'now'); // مثل: "15/02/1445"
 
 // الشركات
-$faker->syrianCompanyName();  // مثال: "شركة النور محدودة المسؤولية"
-// المسميات الوظيفية
-$faker->syrianJobTitle();     // مثال: "مهندس برمجيات"
-// أنواع الأعمال
-$faker->syrianBusinessType(); // مثال: "تكنولوجيا المعلومات"
-
-// الأطعمة السورية
-$faker->syrianFood();            // e.g., "شيش برك"
-// الأقوال المأثورة
-$faker->syrianIdiom();           // e.g., "بيضحك عالمشنقة"
+$faker->companyName();  // مثل: "شركة النور محدودة المسؤولية"
+// المهن
+$faker->jobTitle();     // مثل: "مهندس برمجيات"
+// الأنشطة التجارية
+$faker->businessType(); // مثل: "تكنولوجيا المعلومات"
+// المأكولات
+$faker->food();            // مثل: "شيش برك"
 // الأمثال الشعبية
-$faker->syrianProverb();         // e.g., "كل تأخيرة فيها خيرة"
-// العناصر التقليدية
-$faker->syrianTraditionalItem(); // e.g., "مروحة يدوية"
-// جملة مؤلفة من المأكولات السورية والعاصر التقليدية والأمثال الشعبية
-$faker->syrianCulturalSentence(); // Output: وأنت عم تاكل محشي كوسا جنب صابون الغار، تذكّر المثل الشامي: "كل تأخيرة فيها خيرة".
+$faker->idiom();           // مثل: "بيضحك عالمشنقة"
+// الحكم الشعبية
+$faker->proverb();         // مثل: "كل تأخيرة فيها خيرة"
+// عناصر تراثية
+$faker->traditionalItem(); // مثل: "مروحة يدوية"
+// جملة تجمع المأكولات، الأمثال، الحكم، والعناصر التراثية
+$faker->culturalSentence(); // مثل: وأنت عم تاكل محشي كوسا جنب صابون الغار، تذكّر المثل الشامي: "كل تأخيرة فيها خيرة".
+
 ```
 
-### دمج مع لارافيل
-الحزمة تُسجل تلقائيًا عبر Service Provider. يمكنك نشر ملف الإعدادات:
-```bash
-php artisan vendor:publish --tag=config
-```
+### الاستخدام مع Laravel
+الحزمة تسجل نفسها تلقائيًا عبر ServiceProvider، وتوفر دالة مساعدة:
+```php
+use Bit\SyFaker\SyFaker;
 
-## الواجهة البرمجية
-- `$faker->syrianName($gender = null)`
-- `$faker->syrianFirstName($gender = null)`
-- `$faker->syrianLastName()`
-- `$faker->syrianAddress()`
-- `$faker->syrianMobile($withCountryCode = true, $company = null)`
-- `$faker->syrianSyriatel($withCountryCode = true)`
-- `$faker->syrianMTN($withCountryCode = true)`
-- `$faker->syrianLandline($withCountryCode = true)`
-- `$faker->syrianGregorianDate($format = 'd/m/Y')`
-- `$faker->syrianHijriDate($format = 'd/m/Y')`
-- `$faker->syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
-- `$faker->syrianCompanyName()`
-- `$faker->syrianJobTitle()`
-- `$faker->syrianBusinessType()`
-- `$faker->syrianFood()`
-- `$faker->syrianIdiom()`
-- `$faker->syrianProverb()`
-- `$faker->syrianTraditionalItem()`
-- `$faker->syrianCulturalSentence()`
+$syFaker = new SyFaker();
+
+// أو يمكنك استخدام الدالة المساعدة مباشرة:
+syFaker()->name();
+
+```
+## واجهة البرمجة (API)
+- `$faker->letter()`
+- `$faker->word()`
+- `$faker->words($count = 5, $asArray = false, $separator = ' ')`
+- `$faker->sentence($mode = 'mixed')`
+- `$faker->sentences($count = 3, $mode = 'mixed', $asArray = false, $separator = ' ')`
+- `$faker->paragraph($min = 3, $max = 7, $mode = 'mixed')`
+- `$faker->name($gender = null)`
+- `$faker->firstName($gender = null)`
+- `$faker->lastName()`
+- `$faker->address()`
+- `$faker->mobile($withCountryCode = true, $company = null)`
+- `$faker->syriatel($withCountryCode = true)`
+- `$faker->mtn($withCountryCode = true)`
+- `$faker->landline($withCountryCode = true)`
+- `$faker->gregorianDate($format = 'd/m/Y')`
+- `$faker->hijriDate($format = 'd/m/Y')`
+- `$faker->randomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
+- `$faker->randomHijriDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
+- `$faker->companyName()`
+- `$faker->jobTitle()`
+- `$faker->businessType()`
+- `$faker->food()`
+- `$faker->idiom()`
+- `$faker->proverb()`
+- `$faker->traditionalItem()`
+- `$faker->culturalSentence()`
+
+## ✅ التوافق مع Laravel و PHP
+
+| Laravel Version | PHP 7.4 | PHP 8.0 | PHP 8.1 | PHP 8.2 | PHP 8.3 | PHP 8.4 |
+|-----------------|---------|---------|---------|---------|---------|---------|
+| Laravel 8       | ✅      | ✅      | ✅      | ✅      | ❌      | ❌      |
+| Laravel 9       | ❌      | ✅      | ✅      | ✅      | ✅      | ❌      |
+| Laravel 10      | ❌      | ✅      | ✅      | ✅      | ✅      | ✅      |
+| Laravel 11      | ❌      | ❌      | ✅      | ✅      | ✅      | ✅      |
+| Laravel 12      | ❌      | ❌      | ✅      | ✅      | ✅      | ✅      |
+
+
+> ❌ = غير مدعوم
+> ✅ = مدعوم بالكامل
+
+
 
 ## الرخصة
 MIT 

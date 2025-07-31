@@ -8,6 +8,7 @@ namespace Bit\SyFaker\Providers;
 * Provides fake but realistic company-related data in Arabic for use in testing and seeding.
 *
 * @package Bit\SyFaker\Providers
+* @license MIT
 * @author Bassel Aflak <bassel.af@gmail.com>
 */
 class CompanyProvider

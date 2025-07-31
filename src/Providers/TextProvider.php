@@ -8,6 +8,7 @@ namespace Bit\SyFaker\Providers;
  * Provides Arabic text generation, including letters, words, dialectal and MSA sentences, and paragraphs.
  *
  * @package Bit\SyFaker\Providers
+ * @license MIT
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class TextProvider

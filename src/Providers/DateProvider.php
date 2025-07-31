@@ -13,6 +13,7 @@ use Alkoumi\LaravelHijriDate\Hijri;
  * Includes options for current and randomly generated dates.
  *
  * @package Bit\SyFaker\Providers
+ * @license MIT
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class DateProvider

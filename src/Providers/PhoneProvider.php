@@ -8,6 +8,7 @@ namespace Bit\SyFaker\Providers;
  * Generates random Syrian phone numbers for mobile (Syriatel, MTN) and landline formats.
  *
  * @package Bit\SyFaker\Providers
+ * @license MIT
  * @author Bassel Aflak <bassel.af@gmail.com>
  */
 class PhoneProvider
