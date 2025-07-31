@@ -3,6 +3,7 @@
 A PHP/Laravel package for generating culturally accurate fake data in Syrian Arabic.
 
 ## Features
+- Syrian Text  and paragraphs
 - Syrian names
 - Syrian addresses
 - Syrian phone numbers (mobile, landline, Syriatel, MTN)
@@ -21,97 +22,96 @@ composer require bit/arab-faker
 ```php
 use Bit\ArabFaker\ArabFaker;
 
-$faker = new ArabFaker();
+$syFaker = new ArabFaker();
 
 // Text and Paragraphs
 $faker->word(); // e.g., "مبسوط", "إيمتى", "سوريا", "رفيق", "عنجد"
-$faker->syrianWords(5); // e.g., "مرحبا كيفك عنجد شوي منيح"
-$faker->syrianWords(5, true); //e.g., ['مرحبا', 'كيفك', 'عنجد', 'شوي', 'منيح']
-$faker->syrianSentences(2); // e.g., "شو صاير معك؟ العمل الجاد يؤدي إلى النجاح."
-$faker->syrianSentences(2, 'msa', false, ' | '); // e.g., "ذهبت إلى السوق | إن التعليم هو أساس تقدم الأمم."
-$faker->syrianSentence(); // e.g., "شو صاير معك؟"
-$faker->syrianSentence('msa'); // e.g., "ذهبت إلى السوق لشراء بعض الحاجيات."
-$faker->syrianSentence('dialect'); // e.g., "خلص بكفي لهون."
-$faker->syrianParagraph(); // default mixed
-$faker->syrianParagraph(4, 6, 'msa'); // only Modern Standard Arabic
-$faker->syrianParagraph(5, 8, 'dialect'); // only Syrian dialect
+$faker->words(5); // e.g., "مرحبا كيفك عنجد شوي منيح"
+$faker->words(5, true); //e.g., ['مرحبا', 'كيفك', 'عنجد', 'شوي', 'منيح']
+$faker->sentences(2); // e.g., "شو صاير معك؟ العمل الجاد يؤدي إلى النجاح."
+$faker->sentences(2, 'msa', false, ' | '); // e.g., "ذهبت إلى السوق | إن التعليم هو أساس تقدم الأمم."
+$faker->sentence(); // e.g., "شو صاير معك؟"
+$faker->sentence('msa'); // e.g., "ذهبت إلى السوق لشراء بعض الحاجيات."
+$faker->sentence('dialect'); // e.g., "خلص بكفي لهون."
+$faker->paragraph(); // default mixed
+$faker->paragraph(4, 6, 'msa'); // only Modern Standard Arabic
+$faker->paragraph(5, 8, 'dialect'); // only Syrian dialect
 
 // Names
-$faker->syrianName(); // e.g., "علي الحلبي"
-$faker->syrianFirstName(); // e.g., "مريم"
-$faker->syrianLastName(); // e.g., "الدمشقي"
+$faker->name(); // e.g., "علي الحلبي"
+$faker->firstName(); // e.g., "مريم"
+$faker->lastName(); // e.g., "الدمشقي"
 
 // Addresses
-$faker->syrianAddress(); // e.g., "دمشق، المزة، شارع الحمرا، بناء رقم 12"
+$faker->address(); // e.g., "دمشق، المزة، شارع الحمرا، بناء رقم 12"
 
 // Phone Numbers
-$faker->syrianMobile(); // e.g., "+963 93 123 4567" (random company)
-$faker->syrianMobile(false); // e.g., "093 123 4567" (without country code)
-$faker->syrianMobile(true, 'syriatel'); // e.g., "+963 93 123 4567" (Syriatel)
-$faker->syrianMobile(true, 'mtn'); // e.g., "+963 94 123 4567" (MTN Syria)
-$faker->syrianSyriatel(); // e.g., "+963 93 123 4567"
-$faker->syrianMTN(); // e.g., "+963 94 123 4567"
-$faker->syrianLandline(); // e.g., "+963 11 123 4567"
-$faker->syrianLandline(false); // e.g., "011 123 4567"
+$faker->mobile(); // e.g., "+963 93 123 4567" (random company)
+$faker->mobile(false); // e.g., "093 123 4567" (without country code)
+$faker->mobile(true, 'syriatel'); // e.g., "+963 93 123 4567" (Syriatel)
+$faker->mobile(true, 'mtn'); // e.g., "+963 94 123 4567" (MTN Syria)
+$faker->syriatel(); // e.g., "+963 93 123 4567"
+$faker->mtn(); // e.g., "+963 94 123 4567"
+$faker->landline(); // e.g., "+963 11 123 4567"
+$faker->landline(false); // e.g., "011 123 4567"
 
 // Dates
-$faker->syrianGregorianDate(); // e.g., "22/07/2025"
-$faker->syrianHijriDate();     // e.g., "16/01/1447"
-$faker->syrianRandomGregorianDate('-2 years', 'now'); // e.g., "05/06/2023"
+$faker->gregorianDate(); // e.g., "22/07/2025"
+$faker->hijriDate();     // e.g., "16/01/1447"
+$faker->randomGregorianDate('-2 years', 'now'); // e.g., "05/06/2023"
+$faker->randomhijriDateDate('-2 years', 'now'); // e.g., "15/02/1445"
 
 // Companies
-$faker->syrianCompanyName();  // e.g., "شركة النور محدودة المسؤولية"
+$faker->companyName();  // e.g., "شركة النور محدودة المسؤولية"
 
 // Job Titles
-$faker->syrianJobTitle();     // e.g., "مهندس برمجيات"
+$faker->jobTitle();     // e.g., "مهندس برمجيات"
 
 // Business Types
-$faker->syrianBusinessType(); // e.g., "تكنولوجيا المعلومات"
+$faker->businessType(); // e.g., "تكنولوجيا المعلومات"
 
 // Syrian foods
-$faker->syrianFood();            // e.g., "شيش برك"
+$faker->food();            // e.g., "شيش برك"
 // idioms
-$faker->syrianIdiom();           // e.g., "بيضحك عالمشنقة"
+$faker->idiom();           // e.g., "بيضحك عالمشنقة"
 // proverbs
-$faker->syrianProverb();         // e.g., "كل تأخيرة فيها خيرة"
+$faker->proverb();         // e.g., "كل تأخيرة فيها خيرة"
 // traditional items
-$faker->syrianTraditionalItem(); // e.g., "مروحة يدوية"
+$faker->traditionalItem(); // e.g., "مروحة يدوية"
 // sentence of: Syrian foods, idioms, proverbs, and traditional items
-$faker->syrianCulturalSentence(); // Output: وأنت عم تاكل محشي كوسا جنب صابون الغار، تذكّر المثل الشامي: "كل تأخيرة فيها خيرة".
+$faker->culturalSentence(); // Output: وأنت عم تاكل محشي كوسا جنب صابون الغار، تذكّر المثل الشامي: "كل تأخيرة فيها خيرة".
 ```
 
 ### Laravel Integration
-The package auto-registers via Service Provider. You can publish the config:
-```bash
-php artisan vendor:publish --tag=config
-```
+The package auto-registers via Service Provider and provides a helper function
 
 ## API
-- `$faker->syrianLetter()`
-- `$faker->syrianWord()`
-- `$faker->syrianWords($count = 5, $asArray = false, $separator = ' ')`
-- `$faker->syrianSentence($mode = 'mixed')`
-- `$faker->syrianSentences($count = 3, $mode = 'mixed', $asArray = false, $separator = ' ')`
-- `$faker->syrianParagraph($min = 3, $max = 7, $mode = 'mixed')`
-- `$faker->syrianName($gender = null)`
-- `$faker->syrianFirstName($gender = null)`
-- `$faker->syrianLastName()`
-- `$faker->syrianAddress()`
-- `$faker->syrianMobile($withCountryCode = true, $company = null)`
-- `$faker->syrianSyriatel($withCountryCode = true)`
-- `$faker->syrianMTN($withCountryCode = true)`
-- `$faker->syrianLandline($withCountryCode = true)`
-- `$faker->syrianGregorianDate($format = 'd/m/Y')`
-- `$faker->syrianHijriDate($format = 'd/m/Y')`
-- `$faker->syrianRandomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
-- `$faker->syrianCompanyName()`
-- `$faker->syrianJobTitle()`
-- `$faker->syrianBusinessType()`
-- `$faker->syrianFood()`
-- `$faker->syrianIdiom()`
-- `$faker->syrianProverb()`
-- `$faker->syrianTraditionalItem()`
-- `$faker->syrianCulturalSentence()`
+- `$faker->letter()`
+- `$faker->word()`
+- `$faker->words($count = 5, $asArray = false, $separator = ' ')`
+- `$faker->sentence($mode = 'mixed')`
+- `$faker->sentences($count = 3, $mode = 'mixed', $asArray = false, $separator = ' ')`
+- `$faker->paragraph($min = 3, $max = 7, $mode = 'mixed')`
+- `$faker->name($gender = null)`
+- `$faker->firstName($gender = null)`
+- `$faker->lastName()`
+- `$faker->address()`
+- `$faker->mobile($withCountryCode = true, $company = null)`
+- `$faker->syriatel($withCountryCode = true)`
+- `$faker->mtn($withCountryCode = true)`
+- `$faker->landline($withCountryCode = true)`
+- `$faker->gregorianDate($format = 'd/m/Y')`
+- `$faker->hijriDate($format = 'd/m/Y')`
+- `$faker->randomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
+- `$faker->randomHijriDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
+- `$faker->companyName()`
+- `$faker->jobTitle()`
+- `$faker->businessType()`
+- `$faker->food()`
+- `$faker->idiom()`
+- `$faker->proverb()`
+- `$faker->TraditionalItem()`
+- `$faker->culturalSentence()`
 
 ## License
 MIT 

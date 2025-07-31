@@ -13,7 +13,7 @@ use Bit\ArabFaker\Providers\TextProvider;
 /**
  * Class ArabFaker
  *
- * Facade for generating various types of Arabic (mostly Syrian) fake data.
+ * Facade for generating various types of Arabic (mostly ) fake data.
  *
  * @package Bit\ArabFaker
  * @author Bassel Aflak <bassel.af@gmail.com>
@@ -78,7 +78,7 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianLetter(): string
+    public function letter(): string
     {
         return $this->textProvider->letter();
     }
@@ -88,7 +88,7 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianWord(): string
+    public function word(): string
     {
         return $this->textProvider->word();
     }
@@ -102,19 +102,19 @@ class ArabFaker
      *
      * @return string[]|string
      */
-    public function syrianWords(int $count = 5, bool $asArray = false, string $separator = ' '): array|string
+    public function words(int $count = 5, bool $asArray = false, string $separator = ' '): array|string
     {
         return $this->textProvider->words($count, $asArray, $separator);
     }
 
     /**
-     * Get a sentence in Syrian dialect, MSA, or mixed.
+     * Get a sentence in  dialect, MSA, or mixed.
      *
      * @param string $mode = 'mixed'|'dialect'|'msa'
      *
      * @return string
      */
-    public function syrianSentence(string $mode = 'mixed'|'dialect'|'msa'): string
+    public function sentence(string $mode = 'mixed'|'dialect'|'msa'): string
     {
         return $this->textProvider->sentence($mode);
     }
@@ -129,13 +129,13 @@ class ArabFaker
      *
      * @return string[]|string
      */
-    public function syrianSentences(int $count = 3, string $mode = 'mixed'|'dialect'|'msa', bool $asArray = false, string $separator = ' '): array|string
+    public function sentences(int $count = 3, string $mode = 'mixed'|'dialect'|'msa', bool $asArray = false, string $separator = ' '): array|string
     {
         return $this->textProvider->sentences($count, $mode, $asArray, $separator);
     }
 
     /**
-     * Get a paragraph composed of random Syrian sentences.
+     * Get a paragraph composed of random  sentences.
      *
      * @param int    $min
      * @param int    $max
@@ -143,63 +143,63 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianParagraph(int $min = 3, int $max = 7, string $mode = 'mixed'|'dialect'|'msa'): string
+    public function paragraph(int $min = 3, int $max = 7, string $mode = 'mixed'|'dialect'|'msa'): string
     {
         return $this->textProvider->paragraph($min, $max, $mode);
     }
 
     /**
-     * Get a Syrian title based on gender.
+     * Get a  title based on gender.
      *
      * @param string|null $gender = null | 'male' | 'female'
      *
      * @return string
      */
-    public function syrianTitle(string|null $gender = null|'male'|'female'): string
+    public function title(string|null $gender = null|'male'|'female'): string
     {
         return $this->nameProvider->title($gender);
     }
 
     /**
-     * Get a full Syrian name.
+     * Get a full  name.
      *
      * @param string|null $gender = null|'male'|'female'
      *
      * @return string
      */
-    public function syrianName(string|null $gender = null|'male'|'female'): string
+    public function name(string|null $gender = null|'male'|'female'): string
     {
         return $this->nameProvider->name($gender);
     }
 
     /**
-     * Get a Syrian first name.
+     * Get a  first name.
      *
      * @param string|null $gender = null|'male'|'female'
      *
      * @return string
      */
-    public function syrianFirstName(string|null $gender = null|'male'|'female'): string
+    public function firstName(string|null $gender = null|'male'|'female'): string
     {
         return $this->nameProvider->firstName($gender);
     }
 
     /**
-     * Get a Syrian last name.
+     * Get a  last name.
      *
      * @return string
      */
-    public function syrianLastName(): string
+    public function lastName(): string
     {
         return $this->nameProvider->lastName();
     }
 
     /**
-     * Get a Syrian address.
+     * Get a  address.
      *
      * @return string
      */
-    public function syrianAddress(): string
+    public function address(): string
     {
         return $this->addressProvider->address();
     }
@@ -212,19 +212,19 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianMobile(bool $withCountryCode = true, string|null $company = null|'syriatel'|'mtn'): string
+    public function mobile(bool $withCountryCode = true, string|null $company = null|'syriatel'|'mtn'): string
     {
         return $this->phoneProvider->mobile($withCountryCode, $company);
     }
 
     /**
-     * Get a Syrian landline number.
+     * Get a  landline number.
      *
      * @param bool $withCountryCode
      *
      * @return string
      */
-    public function syrianLandline(bool $withCountryCode = true): string
+    public function landline(bool $withCountryCode = true): string
     {
         return $this->phoneProvider->landline($withCountryCode);
     }
@@ -236,7 +236,7 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianSyriatel(bool $withCountryCode = true): string
+    public function syriatel(bool $withCountryCode = true): string
     {
         return $this->phoneProvider->syriatel($withCountryCode);
     }
@@ -248,7 +248,7 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianMTN(bool $withCountryCode = true): string
+    public function mtn(bool $withCountryCode = true): string
     {
         return $this->phoneProvider->mtn($withCountryCode);
     }
@@ -260,7 +260,7 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianGregorianDate(string $format = 'd/m/Y'): bool|string
+    public function gregorianDate(string $format = 'd/m/Y'): bool|string
     {
         return $this->dateProvider->gregorianDate($format);
     }
@@ -272,7 +272,7 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianHijriDate(string $format = 'd/m/Y'): string
+    public function hijriDate(string $format = 'd/m/Y'): string
     {
         return $this->dateProvider->hijriDate($format);
     }
@@ -286,87 +286,101 @@ class ArabFaker
      *
      * @return string
      */
-    public function syrianRandomGregorianDate(string $start = '-10 years', string $end = 'now', string $format = 'd/m/Y'): string
+    public function randomGregorianDate(string $start = '-10 years', string $end = 'now', string $format = 'd/m/Y'): string
     {
         return $this->dateProvider->randomGregorianDate($start, $end, $format);
     }
 
     /**
-     * Get a random Syrian company name.
+     * Get a random Hijri date in Arabic format.
+     *
+     * @param string $start
+     * @param string $end
+     * @param string $format
      *
      * @return string
      */
-    public function syrianCompanyName(): string
+    public function randomHijrinDate(string $start = '-10 years', string $end = 'now', string $format = 'd/m/Y'): string
+    {
+        return $this->dateProvider->randomHijriDate($start, $end, $format);
+    }
+
+    /**
+     * Get a random  company name.
+     *
+     * @return string
+     */
+    public function companyName(): string
     {
         return $this->companyProvider->companyName();
     }
 
     /**
-     * Get a Syrian job title.
+     * Get a  job title.
      *
      * @return string
      */
-    public function syrianJobTitle(): string
+    public function jobTitle(): string
     {
         return $this->companyProvider->jobTitle();
     }
 
     /**
-     * Get a Syrian business type.
+     * Get a  business type.
      *
      * @return string
      */
-    public function syrianBusinessType(): string
+    public function businessType(): string
     {
         return $this->companyProvider->businessType();
     }
 
     /**
-     * Get a traditional Syrian food name.
+     * Get a traditional  food name.
      *
      * @return string
      */
-    public function syrianFood(): string
+    public function food(): string
     {
         return $this->cultureProvider->food();
     }
 
     /**
-     * Get a common Syrian idiom.
+     * Get a common  idiom.
      *
      * @return string
      */
-    public function syrianIdiom(): string
+    public function idiom(): string
     {
         return $this->cultureProvider->idiom();
     }
 
     /**
-     * Get a well-known Syrian proverb.
+     * Get a well-known  proverb.
      *
      * @return string
      */
-    public function syrianProverb(): string
+    public function proverb(): string
     {
         return $this->cultureProvider->proverb();
     }
 
     /**
-     * Get a traditional Syrian item.
+     * Get a traditional  item.
      *
      * @return string
      */
-    public function syrianTraditionalItem(): string
+    public function traditionalItem(): string
     {
         return $this->cultureProvider->traditionalItem();
     }
 
     /**
-     * Get a cultural Syrian sentence combining food, item, and proverb.
+     * Get a cultural  sentence combining food, item, and proverb.
      *
      * @return string
      */
-    public function syrianCulturalSentence(): string
+    public function culturalSentence(): string
     {
         $food  = $this->cultureProvider->food();
         $proverb = $this->cultureProvider->proverb();

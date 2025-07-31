@@ -64,4 +64,20 @@ class DateProvider
         $formatter->setPattern($format);
         return $formatter->format($date);
     }
+
+    /**
+    * Get a random Hijri date between two time ranges.
+    *
+    * @param string $start  Optional. Start date string. Default '-10 years'.
+    * @param string $end    Optional. End date string. Default 'now'.
+    * @param string $format Optional. Date format pattern. Default 'd/m/Y'.
+    *
+    * @return string Formatted random Gregorian date.
+    */
+    public function randomHijriDate(string $start = '-10 years', string $end = 'now', string $format = 'd/m/Y')
+    {
+        $timestamp = mt_rand(strtotime($start), strtotime($end));
+        $gregorian = date('Y-m-d', $timestamp); // Format for Hijri::Date
+        return Hijri::Date($format, $gregorian);
+    }
 }
