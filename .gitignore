@@ -1,2 +1,2 @@
-./vendor
-./llms.txt
+vendor/
+llms.txt
