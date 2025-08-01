@@ -1,5 +1,6 @@
 
 # SyFaker
+![Version](https://img.shields.io/badge/Version-1.0.1-blue?style=flat&logoColor=white)
 ![Laravel](https://img.shields.io/badge/Laravel-8–12-f53003?style=flat&logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-7.4–8.4-4F5B93?style=flat&logo=php&logoColor=white)
 ![License](https://img.shields.io/github/license/bit-01/sy-faker?style=flat)
