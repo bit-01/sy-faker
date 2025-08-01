@@ -32,7 +32,7 @@ A PHP package for generating realistic Syrian Arabic fake data—names, addresse
 
 ## Installation
 ```bash
-composer require bit/sy-faker
+composer require bit-01/sy-faker
 ```
 
 ## Usage
