@@ -33,7 +33,7 @@
 
 ## التثبيت
 ```bash
-composer require bit/sy-faker
+composer require bit-01/sy-faker
 ```
 
 ## الاستخدام
