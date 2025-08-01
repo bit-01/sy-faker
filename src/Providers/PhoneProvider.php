@@ -67,7 +67,7 @@ class PhoneProvider
      *
      * @return string Mobile phone number.
      */
-    public function mobile(bool $withCountryCode = true, string|null $company = null|'syriatel'|'mtn'): string
+    public function mobile(bool $withCountryCode = true, string|null $company = null): string
     {
 
         $prefix = $this->getMobilePrefix($company);
@@ -137,7 +137,7 @@ class PhoneProvider
      *
      * @return string Mobile prefix.
      */
-    protected function getMobilePrefix(string|null $company = null|'syriatel'|'mtn'): string
+    protected function getMobilePrefix(string|null $company = null): string
     {
 
         if ($company === 'syriatel') {

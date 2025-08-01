@@ -156,7 +156,7 @@ class SyFaker
      *
      * @return string
      */
-    public function title(string|null $gender = null|'male'|'female'): string
+    public function title(string|null $gender = null): string
     {
         return $this->nameProvider->title($gender);
     }
@@ -164,11 +164,11 @@ class SyFaker
     /**
      * Get a full  name.
      *
-     * @param string|null $gender = null|'male'|'female'
+     * @param string|null $gender = null
      *
      * @return string
      */
-    public function name(string|null $gender = null|'male'|'female'): string
+    public function name(string|null $gender = null): string
     {
         return $this->nameProvider->name($gender);
     }
@@ -176,11 +176,11 @@ class SyFaker
     /**
      * Get a  first name.
      *
-     * @param string|null $gender = null|'male'|'female'
+     * @param string|null $gender = null
      *
      * @return string
      */
-    public function firstName(string|null $gender = null|'male'|'female'): string
+    public function firstName(string|null $gender = null): string
     {
         return $this->nameProvider->firstName($gender);
     }
@@ -209,11 +209,11 @@ class SyFaker
      * Get a mobile number from any provider.
      *
      * @param bool        $withCountryCode
-     * @param string|null $company = null|'syriatel'|'mtn'
+     * @param string|null $company = null
      *
      * @return string
      */
-    public function mobile(bool $withCountryCode = true, string|null $company = null|'syriatel'|'mtn'): string
+    public function mobile(bool $withCountryCode = true, string|null $company = null): string
     {
         return $this->phoneProvider->mobile($withCountryCode, $company);
     }
@@ -301,7 +301,7 @@ class SyFaker
      *
      * @return string
      */
-    public function randomHijrinDate(string $start = '-10 years', string $end = 'now', string $format = 'd/m/Y'): string
+    public function randomHijriDate(string $start = '-10 years', string $end = 'now', string $format = 'd/m/Y'): string
     {
         return $this->dateProvider->randomHijriDate($start, $end, $format);
     }

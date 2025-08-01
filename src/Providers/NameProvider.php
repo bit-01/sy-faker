@@ -51,9 +51,9 @@ class NameProvider
      * @var string[]
      */
     protected $lastNames = [
-        'الحلبي', 'الدمشقي', 'العلي', 'الخطيب', 'الأسعد', 'الحموي', 'اليوسف', 'الشيخ', 'الزهر', 'الرفاعي',
+        'الحلبي', 'العلي', 'الخطيب', 'الأسعد', 'الحموي', 'اليوسف', 'الشيخ', 'الزهر', 'الرفاعي',
         'الطويل', 'السباعي', 'الملقي', 'الزعبي', 'الديب', 'البرهو', 'الطاهر', 'النجار', 'العباس', 'القدسي',
-        'الحسيني', 'السعيد', 'البغدادي', 'السواس', 'المبارك', 'الديري', 'السرميني', 'السقال', 'الشهابي', 'الحراكي',
+        'الحسيني', 'السعيد', 'السواس', 'المبارك', 'الديري', 'السرميني', 'السقال', 'الشهابي', 'الحراكي',
         'الصباغ', 'العيسى', 'الكرمي', 'العتوم', 'الحاج', 'الأيوبي', 'الحمصي', 'الدمري', 'العبدالله', 'الصواف',
         'الحسين', 'الحمادة', 'القادري', 'الخوري', 'الطراونة', 'المصري', 'القدور', 'اللبابيدي', 'العظمة', 'الشاغوري',
         'الباشا', 'الخواجة', 'العمري', 'الحايك', 'العجرمي', 'الفوال', 'الجاسم', 'السرور', 'العدوي', 'الشنتوت',
@@ -67,7 +67,7 @@ class NameProvider
     *
     * @return string Arabic title.
     */
-    public function title(string|null $gender = null|'male'|'female'): string
+    public function title(string|null $gender = null): string
     {
         $maleTitles = ['السيد', 'الأستاذ', 'الدكتور', 'الأخ', "الحاج"];
         $femaleTitles = ['السيدة', 'الآنسة', 'الدكتورة', 'الأخت', "الحاجة"];
@@ -92,7 +92,7 @@ class NameProvider
      *
      * @return string Full name.
      */
-    public function name(string|null $gender = null|'male'|'female'): string
+    public function name(string|null $gender = null): string
     {
         if ($gender === 'male') {
             $first = $this->firstName('male');
@@ -112,7 +112,7 @@ class NameProvider
     *
     * @return string First name.
     */
-    public function firstName(string|null $gender = null|'male'|'female'): string
+    public function firstName(string|null $gender = null): string
     {
         if ($gender === 'male') {
             return $this->maleFirstNames[array_rand($this->maleFirstNames)];
