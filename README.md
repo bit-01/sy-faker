@@ -1,18 +1,20 @@
 
 # SyFaker
+![Laravel](https://img.shields.io/badge/Version-1.0.0-blue?style=flat&logoColor=white)
 ![Laravel](https://img.shields.io/badge/Laravel-8–12-f53003?style=flat&logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-7.4–8.4-4F5B93?style=flat&logo=php&logoColor=white)
 ![License](https://img.shields.io/github/license/bit-01/sy-faker?style=flat)
 ![Packagist Version](https://img.shields.io/packagist/v/bit/sy-faker?style=flat)
 ![Downloads](https://img.shields.io/packagist/dt/bit/sy-faker?style=flat)
 
+<img src="image.png" alt="SyFaker" width="250" style="display: block;" />
 A PHP package for generating realistic Syrian Arabic fake data—names, addresses, text, and more. Designed for Laravel 8–12 with a Faker-like API, it delivers authentic Syrian dialect content, from Damascene streets to Aleppine names. Perfect for testing, seeding databases, or placeholder content with local flavor.
 
 ## Index
 1. [Features](#features)
 1. [Installation](#installation)
 1. [Usage](#usage)
-1. [Laravel Integration](#laravel-integration)
+    1. [Laravel Integration](#laravel-integration)
 1. [API](#api)
 1. [Laravel & PHP Compatibility](#-laravel--php-compatibility)
 1. [License](#license)

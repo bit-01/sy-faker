@@ -6,6 +6,7 @@
 ![Packagist Version](https://img.shields.io/packagist/v/bit/sy-faker?style=flat)
 ![Downloads](https://img.shields.io/packagist/dt/bit/sy-faker?style=flat)
 
+<img src="image.png" alt="SyFaker" width="250" style="display: block;" />
 حزمة PHP لتوليد بيانات سورية واقعية زائفة — أسماء، عناوين، نصوص والمزيد. مصممة للعمل مع Laravel من الإصدار 8 إلى 12، وتوفر محتوى أصيلًا باللهجة السورية من شوارع دمشق إلى أسماء حلبية. مثالية للاختبارات، ملء قواعد البيانات، أو محتوى مؤقت بنكهة محلية.
 
 ## الفهرس

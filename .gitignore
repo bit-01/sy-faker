@@ -1,2 +1,6 @@
 vendor/
 llms.txt
+
+.DS_Store
+Thumbs.db
+
