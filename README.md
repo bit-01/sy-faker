@@ -77,7 +77,7 @@ $faker->landline(false); // e.g., "011 123 4567"
 $faker->gregorianDate(); // e.g., "22/07/2025"
 $faker->hijriDate();     // e.g., "16/01/1447"
 $faker->randomGregorianDate('-2 years', 'now'); // e.g., "05/06/2023"
-$faker->randomhijriDateDate('-2 years', 'now'); // e.g., "15/02/1445"
+$faker->randomHijriDate('-2 years', 'now'); // e.g., "15/02/1445"
 
 // Companies
 $faker->companyName();  // e.g., "شركة النور محدودة المسؤولية"
@@ -126,9 +126,9 @@ syFaker()->name();
 - `$faker->syriatel($withCountryCode = true)`
 - `$faker->mtn($withCountryCode = true)`
 - `$faker->landline($withCountryCode = true)`
-- `$faker->gregorianDate($format = 'd/m/Y')`
+- `$faker->gregorianDate($format = 'd/M/Y')`
 - `$faker->hijriDate($format = 'd/m/Y')`
-- `$faker->randomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
+- `$faker->randomGregorianDate($start = '-10 years', $end = 'now', $format = 'd/M/Y')`
 - `$faker->randomHijriDate($start = '-10 years', $end = 'now', $format = 'd/m/Y')`
 - `$faker->companyName()`
 - `$faker->jobTitle()`

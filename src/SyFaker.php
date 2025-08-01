@@ -261,7 +261,7 @@ class SyFaker
      *
      * @return string
      */
-    public function gregorianDate(string $format = 'd/m/Y'): bool|string
+    public function gregorianDate(string $format = 'd/M/Y'): bool|string
     {
         return $this->dateProvider->gregorianDate($format);
     }
@@ -287,7 +287,7 @@ class SyFaker
      *
      * @return string
      */
-    public function randomGregorianDate(string $start = '-10 years', string $end = 'now', string $format = 'd/m/Y'): string
+    public function randomGregorianDate(string $start = '-10 years', string $end = 'now', string $format = 'd/M/Y'): string
     {
         return $this->dateProvider->randomGregorianDate($start, $end, $format);
     }

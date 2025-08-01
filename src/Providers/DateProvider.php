@@ -26,11 +26,10 @@ class DateProvider
     *
     * @return bool|string Formatted Gregorian date.
     */
-    public function gregorianDate(string $format = 'd/m/Y', string $locale = 'ar_SY'): bool|string
+    public function gregorianDate(string $format = 'd/MM/Y', string $locale = 'ar_SY'): bool|string
     {
         $date = new DateTime();
-        $formatter = new IntlDateFormatter($locale, IntlDateFormatter::FULL, IntlDateFormatter::NONE);
-        $formatter->setPattern($format);
+        $formatter = new IntlDateFormatter($locale, timeType: IntlDateFormatter::NONE, pattern: $format);
         return $formatter->format($date);
     }
 
